@@ -1,0 +1,6 @@
+ -am ''/.settings
+/target
+/test-output
+/.classpath
+/.project
+*.iml
