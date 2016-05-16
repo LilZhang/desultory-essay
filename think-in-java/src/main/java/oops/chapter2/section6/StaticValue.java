@@ -39,5 +39,10 @@ public class StaticValue
     public static class Obj
     {
         public static int STATIC_VALUE = 55;
+
+        public static int getStaticValue()
+        {
+            return STATIC_VALUE;
+        }
     }
 }
