@@ -23,10 +23,10 @@ public class TestEquals
         Obj obj2 = new Obj();
 
         obj1.field = 1;
-        obj2.field = 2;
+        obj2.field = 1;
 
         System.out.println(obj1 == obj2);       // false
-        System.out.println(obj1.equals(obj2));  // false
+        System.out.println(obj1.equals(obj2));  // true
 
         String str1 = new String("abc");
         String str2 = new String("abc");
@@ -49,5 +49,29 @@ public class TestEquals
     public static class Obj
     {
         int field;
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o)
+            {
+                return true;
+            }
+            if (!(o instanceof Obj))
+            {
+                return false;
+            }
+
+            Obj obj = (Obj) o;
+
+            return field == obj.field;
+
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return field;
+        }
     }
 }
