@@ -26,8 +26,8 @@ public class ClassInit
         2. init field object : static-2
         3. init field object : static
         4. superclass constructor
-        5. init object code
-        6. init field object : field
+        5. init field object : field
+        6. init object code
         7. init field object : field-2
         8. constructor with params
         */
@@ -55,6 +55,8 @@ public class ClassInit
             PrintUtil.println("init static code");
         }
 
+        private Field field = new Field("field");
+
         {
             PrintUtil.println("init object code");
         }
@@ -62,8 +64,6 @@ public class ClassInit
         private static Field staticField2 = new Field("static-2");
 
         private static Field staticField = new Field("static");
-
-        private Field field = new Field("field");
 
         private Field field2 = new Field("field-2");
 
