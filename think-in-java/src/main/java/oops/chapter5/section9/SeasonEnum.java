@@ -45,6 +45,15 @@ public enum SeasonEnum
         return message;
     }
 
+    @Override
+    public String toString()
+    {
+        final StringBuilder sb = new StringBuilder("SeasonEnum{");
+        sb.append("value=").append(value);
+        sb.append(", message='").append(message).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
     public static SeasonEnum get(int seasonValue)
     {
@@ -56,5 +65,27 @@ public enum SeasonEnum
             }
         }
         return null;
+    }
+
+    public static void main(String[] args)
+    {
+        SeasonEnum seasonEnum = SeasonEnum.SPRING;
+        switch (seasonEnum)
+        {
+            case SPRING:
+                System.out.println("spring");
+                break;
+            case SUMMER:
+                System.out.println("summer");
+                break;
+            case AUTUMN:
+                System.out.println("autumn");
+                break;
+            case WINTER:
+                System.out.println("winter");
+                break;
+            default:
+                System.out.println("?");
+        }
     }
 }
