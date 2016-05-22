@@ -20,7 +20,9 @@ public class Upcasting
     public static void main(String[] args)
     {
         Obj obj = new Obj();
-        Base.getInfo(obj);
+        Obj2 obj2 = new Obj2();
+        obj.getInfo();
+        obj2.getInfo();
     }
 
     public static class Base
@@ -30,9 +32,9 @@ public class Upcasting
             return "base info";
         }
 
-        public static void getInfo(Base base)
+        public void getInfo()
         {
-            System.out.println(base.info());
+            System.out.println(this.info());
         }
     }
 
@@ -43,5 +45,10 @@ public class Upcasting
         {
             return "obj info";
         }
+    }
+
+    public static class Obj2 extends Base
+    {
+
     }
 }
