@@ -21,7 +21,7 @@ public class AlternativeClasses
 }
 
 // 1. 一个 .java 中只允许一个public class存在
-// 2. 其余class或interface的权限只能为包可见，不可为private，protected
+// 2. 在类中，其余class或interface的权限只能为包可见，不可为private，protected
 // 3. 编译时生成另外的 .class 文件，不带前缀
 class AnotherClass
 {
