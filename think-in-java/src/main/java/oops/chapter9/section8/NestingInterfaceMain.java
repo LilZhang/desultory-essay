@@ -30,7 +30,7 @@ public class NestingInterfaceMain
         //没有接口 D 的权限，也没有 D 的成员的权限
         //nestingInterfaceClass.getD().d();
 
-                NestingInterfaceClass nestingInterfaceClass2 = new NestingInterfaceClass();
+        NestingInterfaceClass nestingInterfaceClass2 = new NestingInterfaceClass();
 
         //可以通过这样的方式访问 D
         nestingInterfaceClass2.receiveD(nestingInterfaceClass.getD());
