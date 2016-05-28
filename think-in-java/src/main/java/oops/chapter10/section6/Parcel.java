@@ -17,14 +17,18 @@ package oops.chapter10.section6;
  */
 public class Parcel
 {
-    public Contents getContents()
+    public Contents getContents(final int val)  // 匿名内部类所使用的外部参数需final
     {
+        // 匿名内部类所使用的外部参数需final
+        final int val2 = 2;
+
         return new Contents()
         {
-            // 匿名类没有构造器
+            // 匿名内部类没有构造器
             // 没有静态属性，静态方法及静态初始化块
+            // 匿名内部类所使用的外部参数需final
 
-            private int value = 666;
+            private int value = val + val2;
 
             public int value()
             {
@@ -37,6 +41,6 @@ public class Parcel
     public static void main(String[] args)
     {
         Parcel parcel = new Parcel();
-        parcel.getContents().value();
+        parcel.getContents(3).value();
     }
 }

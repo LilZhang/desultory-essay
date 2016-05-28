@@ -36,4 +36,13 @@ public interface NestingInterface
     }*/
 
     void g();
+
+    // 自动为 public, static
+    class NestingInterfaceImpl implements NestingInterface
+    {
+        public void g()
+        {
+
+        }
+    }
 }

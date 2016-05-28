@@ -28,6 +28,7 @@ public class Parcel2
         return new Wrapping(val)
         {
             // 该匿名类为Wrapping类的子类，所以需super
+            // 所以可以添加方法
             // 调用父类带参数构造器
 
             @Override
@@ -35,6 +36,11 @@ public class Parcel2
             {
                 // 使用匿名内部类外的变量需final(类属性除外)
                 return super.value() * factor * factor2;
+            }
+
+            public void method2()
+            {
+
             }
         };
     }
