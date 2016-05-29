@@ -18,9 +18,19 @@ package oops.chapter10.section6;
 public class Parcel2
 {
     // 使用匿名内部类外的变量需final(类属性除外)
-    private static int factor2 = 2;
+    private int factor2 = 2;
 
-    public static Wrapping getWrapping(int val)
+    public int getFactor2()
+    {
+        return factor2;
+    }
+
+    public void setFactor2(int factor2)
+    {
+        this.factor2 = factor2;
+    }
+
+    public Wrapping getWrapping(int val)
     {
         // 使用匿名内部类外的变量需final(类属性除外)
         final int factor = 3;
@@ -38,15 +48,19 @@ public class Parcel2
                 return super.value() * factor * factor2;
             }
 
-            public void method2()
+            public Parcel2 getOutter()
             {
-
+                return Parcel2.this;
             }
         };
     }
 
     public static void main(String[] args)
     {
-        System.out.println(getWrapping(6).value());
+        Parcel2 parcel2 = new Parcel2();
+        Wrapping wrapping = parcel2.getWrapping(6);
+        System.out.println(wrapping.value());
+        parcel2.setFactor2(5);
+        System.out.println(wrapping.getOutter().getFactor2());
     }
 }

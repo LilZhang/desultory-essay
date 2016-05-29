@@ -28,4 +28,9 @@ public class Wrapping
     {
         return this.val;
     }
+
+    public Parcel2 getOutter()
+    {
+        return null;
+    }
 }
