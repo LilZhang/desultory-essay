@@ -7,9 +7,7 @@
 
 package oops.chapter11.section13;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Description:
@@ -33,6 +31,12 @@ public class IteratorTest
         // 添加了自定义的 Iterable 获得方法，可在foreach中使用
         // reversed() 为反序
         for (String string : stringList.reversed())
+        {
+            // TODO: 2016/5/30 handle
+        }
+
+        // randomized() 为随机乱序
+        for (String string : stringList.randomized())
         {
             // TODO: 2016/5/30 handle
         }
@@ -76,6 +80,21 @@ public class IteratorTest
                             throw new UnsupportedOperationException();
                         }
                     };
+                }
+            };
+        }
+
+        // 添加了自定义的 Iterable 获得方法，可在foreach中使用
+        public Iterable<E> randomized()
+        {
+            return new Iterable<E>()
+            {
+                public Iterator<E> iterator()
+                {
+                    List<E> shuffled = Arrays.asList(
+                            (E[]) ReversibleArrayList.this.toArray());
+                    Collections.shuffle(shuffled, new Random(47));
+                    return shuffled.iterator();
                 }
             };
         }
