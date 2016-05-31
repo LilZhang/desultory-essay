@@ -25,11 +25,31 @@ public class LoggingExceptions
     {
         try
         {
-            throw new LoggingException();
+            throw new Exception("test");
         }
         catch (LoggingException e)
         {
-            System.err.println("caught" + e);
+            System.err.println("caught " + e);
+
+            System.out.println(" ==== ");
+            System.out.println("e.getMessage() " + e.getMessage());
+            System.out.println(" ==== ");
+            System.out.println("e.getLocalizedMessage() " + e.getLocalizedMessage());
+            System.out.println(" ==== ");
+            System.out.println("e.toString() " + e.toString());
+            System.out.println(" ==== ");
+        }
+        catch (Exception e)
+        {
+            System.err.println("caught " + e);
+
+            System.out.println(" ==== ");
+            System.out.println("e.getMessage() " + e.getMessage());
+            System.out.println(" ==== ");
+            System.out.println("e.getLocalizedMessage() " + e.getLocalizedMessage());
+            System.out.println(" ==== ");
+            System.out.println("e.toString() " + e.toString());
+            System.out.println(" ==== ");
         }
     }
 }
