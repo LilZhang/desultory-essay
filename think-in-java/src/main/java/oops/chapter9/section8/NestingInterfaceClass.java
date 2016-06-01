@@ -17,6 +17,7 @@ package oops.chapter9.section8;
  */
 public class NestingInterfaceClass
 {
+    // 自动为 static
     interface B
     {
         void b();
