@@ -42,5 +42,21 @@ public class DefaultValueTest
         long l;
         float f;
         double d;
+
+        @Override
+        public String toString()
+        {
+            final StringBuilder sb = new StringBuilder("Obj{");
+            sb.append("b=").append(b);
+            sb.append(", c=").append(c);
+            sb.append(", by=").append(by);
+            sb.append(", s=").append(s);
+            sb.append(", i=").append(i);
+            sb.append(", l=").append(l);
+            sb.append(", f=").append(f);
+            sb.append(", d=").append(d);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 }
