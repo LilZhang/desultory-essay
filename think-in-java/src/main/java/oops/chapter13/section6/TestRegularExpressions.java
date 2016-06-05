@@ -42,5 +42,20 @@ public class TestRegularExpressions
                         matcher.end() + "  \"");
             }
         }
+
+        /**
+         * output:
+         *   input : abcabcdefabc
+             regular expression : abc
+             Match " abc at position 0 - 3  "
+             Match " abc at position 3 - 6  "
+             Match " abc at position 9 - 12  "
+             regular expression : (abc)
+             Match " abc at position 0 - 3  "
+             Match " abc at position 3 - 6  "
+             Match " abc at position 9 - 12  "
+             regular expression : (abc){2,}
+             Match " abcabc at position 0 - 6  "
+         */
     }
 }
