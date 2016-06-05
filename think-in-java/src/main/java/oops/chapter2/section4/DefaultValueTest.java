@@ -30,6 +30,8 @@ public class DefaultValueTest
         System.out.println(obj.l == 0L);
         System.out.println(obj.f == 0f);
         System.out.println(obj.d == 0d);
+
+        System.out.println(obj);
     }
 
     public static class Obj
@@ -46,7 +48,7 @@ public class DefaultValueTest
         @Override
         public String toString()
         {
-            final StringBuilder sb = new StringBuilder("Obj{");
+            /*final StringBuilder sb = new StringBuilder("Obj{");
             sb.append("b=").append(b);
             sb.append(", c=").append(c);
             sb.append(", by=").append(by);
@@ -56,7 +58,9 @@ public class DefaultValueTest
             sb.append(", f=").append(f);
             sb.append(", d=").append(d);
             sb.append('}');
-            return sb.toString();
+            return sb.toString();*/
+
+            return super.toString();
         }
     }
 }
