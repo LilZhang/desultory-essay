@@ -27,6 +27,7 @@ public class Binding
 
         Obj obj = new Obj();
         outputField(obj);           // outputField : base field
+        outputField2(obj);           // outputField : base field
         outputStaticMethod(obj);    // outputStaticMethod : base static method
         outputPrivateMethod(obj);   // outputPrivateMethod : base private method
         outputPublicMethod(obj);    // outputPublicMethod : obj public method
@@ -35,6 +36,11 @@ public class Binding
     private static void outputField(Base base)
     {
         System.out.println("outputField : " + base.field);
+    }
+
+    private static void outputField2(Object object)
+    {
+        System.out.println("outputField : " + ((Obj) object).field);
     }
 
     private static void outputStaticMethod(Base base)

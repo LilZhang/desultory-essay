@@ -22,8 +22,6 @@ import java.util.List;
  */
 public class ForNameCreator extends PetCreator
 {
-    private static final List<Class<? extends Pet>> types = loader();
-
     private static String[] typeNames =
             {
                     "oops.chapter14.section3.domain.Mutt",
@@ -35,6 +33,8 @@ public class ForNameCreator extends PetCreator
                     "oops.chapter14.section3.domain.Mutt",
                     "oops.chapter14.section3.domain.Mutt"
             };
+
+    private static final List<Class<? extends Pet>> types = loader();
 
     @Override
     public List<Class<? extends Pet>> types()

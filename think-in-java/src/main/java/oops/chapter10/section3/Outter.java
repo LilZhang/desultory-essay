@@ -17,12 +17,22 @@ package oops.chapter10.section3;
  */
 public class Outter
 {
+    private int field;
+
     class Inner
     {
         // 在内部类方法中获取外部类对象引用可以使用 .this
         Outter getOutter()
         {
             return Outter.this;
+        }
+
+        int getOutterField()
+        {
+            return field;
+
+//            or
+//            return Outter.this.field;
         }
     }
 
