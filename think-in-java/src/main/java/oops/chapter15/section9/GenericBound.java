@@ -17,18 +17,27 @@ package oops.chapter15.section9;
  */
 public class GenericBound
 {
-    public static <T extends Colorful & Powerful> int method(T obj)
+    // class must be first, then interfaces
+    public static <T extends Colorful & Powerful & Usage> int method(T obj)
     {
-        return obj.getColor() + obj.getPower();
+        return obj.getColor() + obj.getPower() + obj.getUsage();
     }
 }
 
-interface Colorful
+class Colorful
 {
-    int getColor();
+    int getColor()
+    {
+        return 0;
+    }
 }
 
 interface Powerful
 {
     int getPower();
+}
+
+interface Usage
+{
+    int getUsage();
 }

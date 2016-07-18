@@ -22,6 +22,7 @@ public class SuperTypeWildCards
 {
     public static void writeTo(List<? super Apple> apples)
     {
+        // <? super Apple> 可接纳Apple及其子类
         apples.add(new Apple());
         apples.add(new Jonathan());
 //        nope
