@@ -31,4 +31,9 @@ public class App
     {
 
     }
+
+    private <T, E> void f1(List<T> list, List<E> list2)
+    {
+
+    }
 }
