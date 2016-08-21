@@ -19,12 +19,14 @@ package oops.chapter19.section2;
 // 若反编译
 // final class StandardEnum extends java.lang.Enum
 // 所以 enum 不能够再继承别的类
+// 因为 final ，所以也不能被继承
 // 不过可以实现接口
 public enum StandardEnum implements Biu
 {
     // values() 和 valueOf(String name) 方法并非 java.lang.Enum 里面的方法。
     // 该方法是由编译期插入的。
 
+    // 其实是 public static final StandardEnum EAST;
     EAST(1, "east"),
 
     WEST(2, "west"),
@@ -42,8 +44,6 @@ public enum StandardEnum implements Biu
         this.type = type;
         this.message = message;
     }
-
-
 
     public static void main(String[] args)
     {
@@ -89,19 +89,9 @@ public enum StandardEnum implements Biu
         return type;
     }
 
-    public void setType(int type)
-    {
-        this.type = type;
-    }
-
     public String getMessage()
     {
         return message;
-    }
-
-    public void setMessage(String message)
-    {
-        this.message = message;
     }
 
     @Override

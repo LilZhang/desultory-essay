@@ -21,10 +21,12 @@ public class BitOperation
     {
         System.out.println(Integer.toBinaryString(105));        // 1101001
         System.out.println(Integer.toBinaryString(106));        // 1101010
-        System.out.println(Integer.toBinaryString(105 & 106));  // 1101000
-        System.out.println(Integer.toBinaryString(105 | 106));  // 11
-        System.out.println(Integer.toBinaryString(105 ^ 106));  // 1101011
+        System.out.println(Integer.toBinaryString(105 & 106));  // 1101000  // 都为1才有1
+        System.out.println(Integer.toBinaryString(105 | 106));  // 1101011  // 有一个1就是1
+        System.out.println(Integer.toBinaryString(105 ^ 106));  // 11       // 不同才有1
         System.out.println(Integer.toBinaryString(~ 106));      // 11111111111111111111111110010101
+
+        System.out.println();
 
         int i = 115;
         System.out.println(Integer.toBinaryString(i));          // 1110011
@@ -32,6 +34,8 @@ public class BitOperation
         System.out.println(Integer.toBinaryString(i >>= 1));    // 11100
         System.out.println(Integer.toBinaryString(i <<= 1));    // 111000
         System.out.println(Integer.toBinaryString(i <<= 1));    // 1110000
+
+        System.out.println();
 
         int positive = 234, nagetive = -234;
         System.out.println(Integer.toBinaryString(positive));           // 11101010
