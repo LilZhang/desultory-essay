@@ -226,10 +226,13 @@ public class CriticalSectionCompareTest
     public static void main(String[] args)
     {
         MainJob(new CriticalSectionCompare.PairManager1(),
-                new CriticalSectionCompare.PairManager2());
+                new CriticalSectionCompare.PairManager2()/*,
+                new CriticalSectionCompare.ExplicitPairManager1(),
+                new CriticalSectionCompare.ExplicitPairManager2()*/
+        );
 
-//        PairManipulator0: Pair: Pair{x=14, y=14} checkCounter = 1411247   （锁全方法）
-//        PairManipulator1: Pair: Pair{x=15, y=15} checkCounter = 29657741  （锁临界区）
+//        PairManipulator0: Pair: Pair{x=14, y=14} checkCounter = 1411247   （synchronized锁全方法）
+//        PairManipulator1: Pair: Pair{x=15, y=15} checkCounter = 29657741  （synchronized锁临界区）
     }
 }
 

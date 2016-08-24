@@ -7,6 +7,9 @@
 
 package oops.chapter21.section3.p5;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * Description:
  * <p/>
@@ -46,6 +49,51 @@ public class CriticalSectionCompare
                 temp = getPair();
             }
             store(temp);
+        }
+    }
+
+    public static class ExplicitPairManager1 extends CriticalSectionCompareTest.PairManager
+    {
+        private Lock lock = new ReentrantLock();
+
+        @Override
+        public void increment()
+        {
+            lock.lock();
+            try
+            {
+                p.incrementX();
+                p.incrementY();
+                store(getPair());
+            }
+            finally
+            {
+                lock.unlock();
+            }
+
+        }
+    }
+
+    public static class ExplicitPairManager2 extends CriticalSectionCompareTest.PairManager
+    {
+        private Lock lock = new ReentrantLock();
+
+        @Override
+        public void increment()
+        {
+            CriticalSectionCompareTest.Pair tmp;
+            lock.lock();
+            try
+            {
+                p.incrementX();
+                p.incrementY();
+                tmp = getPair();
+            }
+            finally
+            {
+                lock.unlock();
+            }
+            store(tmp);
         }
     }
 }
