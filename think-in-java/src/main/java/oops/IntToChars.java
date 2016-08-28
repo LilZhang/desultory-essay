@@ -110,7 +110,7 @@ public class IntToChars
         // Fall thru to fast mode for smaller numbers
         // assert(i <= 65536, i);
         for (;;) {
-            q = (i * 52429) >>> (16+3);
+            q = (i * 52429) >>> (16+3);     // q = i / 10
             r = i - ((q << 3) + (q << 1));  // r = i-(q*10) ...
             buf [--charPos] = digits [r];
             i = q;
