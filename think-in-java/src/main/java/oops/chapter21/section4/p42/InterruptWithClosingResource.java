@@ -5,9 +5,9 @@
  *
  */
 
-package oops.chapter21.section4.p32;
+package oops.chapter21.section4.p42;
 
-import oops.chapter21.section4.p31.IOBlocked;
+import oops.chapter21.section4.p41.IOBlocked;
 
 import java.io.InputStream;
 import java.net.ServerSocket;

@@ -5,7 +5,7 @@
  *
  */
 
-package oops.chapter21.section4.p31;
+package oops.chapter21.section4.p41;
 
 import java.io.IOException;
 import java.io.InputStream;
