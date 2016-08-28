@@ -5,7 +5,7 @@
  *
  */
 
-package oops.chapter21.section4.p3;
+package oops.chapter21.section4.p31;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +27,7 @@ public class IOBlocked implements Runnable
         this.in = in;
     }
 
+    // I/O 不可被中断
     public void run()
     {
         System.out.println("waiting for read().");

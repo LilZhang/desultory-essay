@@ -5,7 +5,7 @@
  *
  */
 
-package oops.chapter21.section4.p3;
+package oops.chapter21.section4.p31;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -5,7 +5,7 @@
  *
  */
 
-package oops.chapter21.section4.p3;
+package oops.chapter21.section4.p31;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class SleepBlocked implements Runnable
 {
+    // 可被中断
+    // 理论上只要能抛出 InterruptedException 异常的 都可以被中断
     public void run()
     {
         try

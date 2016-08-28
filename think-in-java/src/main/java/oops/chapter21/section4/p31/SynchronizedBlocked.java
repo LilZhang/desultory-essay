@@ -5,7 +5,7 @@
  *
  */
 
-package oops.chapter21.section4.p3;
+package oops.chapter21.section4.p31;
 
 /**
  * Description:
@@ -37,6 +37,8 @@ public class SynchronizedBlocked implements Runnable
         }.start();
     }
 
+    // 一个线程尝试获取另一个线程对相同对象的锁，因而阻塞。
+    // 此时无法被中断
     public void run()
     {
         System.out.println("trying to call SynchronizedBlocked.f()..." +
