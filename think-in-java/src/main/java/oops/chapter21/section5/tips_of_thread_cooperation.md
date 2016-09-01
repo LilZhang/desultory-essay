@@ -4,3 +4,5 @@
 
 - wait() 会释放锁，sleep() 和 yield() 不会释放锁。
 
+- synchronized(aObject): aObject的两个方法
+ `synchronized hangUp() { wait(); }` 和 `synchronized prod() { notifyAll(); }`是写在一起的。
