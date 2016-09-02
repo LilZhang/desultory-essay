@@ -9,7 +9,13 @@ package oops.chapter21.section5.p4;
 
 import oops.chapter21.section1.LiftOff;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * Description:
@@ -19,6 +25,11 @@ import java.util.concurrent.BlockingQueue;
  * Project        : desultory-essay
  * File Name      : TestBlockingQueues.java
  */
+
+// 关于同步队列 BlockingQueue:
+    // 实现大致有 LinkedBlockingQueue, ArrayBlockingQueue 和 SynchronousQueue
+    // 任何时刻只允许一个线程读写
+
 class LiftOffRunner implements Runnable
 {
     private BlockingQueue<LiftOff> rockets;
@@ -60,5 +71,43 @@ class LiftOffRunner implements Runnable
 
 public class TestBlockingQueues
 {
-    // TODO: 2016/9/1  
+    static void getKey()
+    {
+        try
+        {
+            new BufferedReader(new InputStreamReader(System.in)).readLine();
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static void getKey(String message)
+    {
+        System.out.println(message);
+        getKey();
+    }
+
+    static void test(String msg, BlockingQueue<LiftOff> queue)
+    {
+        System.out.println(msg);
+        LiftOffRunner runner = new LiftOffRunner(queue);
+        Thread thread = new Thread(runner);
+        thread.start();
+        for (int i = 0; i < 5; i++)
+        {
+            runner.add(new LiftOff());
+        }
+        getKey("Press 'Enter' (" + msg + ")");
+        thread.interrupt();
+        System.out.println("Finish " + msg + " test");
+    }
+
+    public static void main(String[] args)
+    {
+        test("LinkedBlockingQueue", new LinkedBlockingQueue<LiftOff>());    // Unlimited size
+        test("ArrayBlockingQueue", new ArrayBlockingQueue<LiftOff>(3));     // Fixed size
+        test("SynchronousQueue", new SynchronousQueue<LiftOff>());        // Size of 1
+    }
 }
