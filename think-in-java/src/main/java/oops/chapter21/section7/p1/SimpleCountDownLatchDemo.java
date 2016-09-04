@@ -68,6 +68,7 @@ public class SimpleCountDownLatchDemo
         {
             countDownLatch.await();
             System.out.println("count down to 0 -> Done");
+            executorService.shutdownNow();
         }
         catch (InterruptedException e)
         {
