@@ -26,13 +26,6 @@ public class SimpleCyclicBarrierDemo
 
     private static int counter = 0;
 
-    private static synchronized int getId()
-    {
-        return ++counter;
-    }
-
-    private static int cyclicCount = 0;
-
     private static int THREAD_NUM = 5;
 
     public static void main(String[] args)
@@ -41,6 +34,8 @@ public class SimpleCyclicBarrierDemo
 
         final CyclicBarrier cyclicBarrier = new CyclicBarrier(THREAD_NUM, new Runnable()
         {
+            private int cyclicCount = 0;
+
             public void run()
             {
                 if (cyclicCount < 3)
@@ -62,7 +57,7 @@ public class SimpleCyclicBarrierDemo
         {
             executorService.execute(new Runnable()
             {
-                private int id = getId();
+                private int id = ++counter;
 
                 public void run()
                 {

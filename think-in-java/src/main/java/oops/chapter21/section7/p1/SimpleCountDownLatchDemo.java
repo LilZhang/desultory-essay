@@ -29,11 +29,6 @@ public class SimpleCountDownLatchDemo
 
     private static int counter = 0;
 
-    private static synchronized int getId()
-    {
-        return ++counter;
-    }
-
     private static int COUNT_DOWN_NUM = 9;
 
     public static void main(String[] args)
@@ -45,7 +40,7 @@ public class SimpleCountDownLatchDemo
         {
             executorService.execute(new Runnable()
             {
-                private int id = getId();
+                private int id = ++counter;
 
                 public void run()
                 {
