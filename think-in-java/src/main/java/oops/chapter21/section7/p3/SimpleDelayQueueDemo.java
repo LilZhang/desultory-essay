@@ -48,7 +48,7 @@ public class SimpleDelayQueueDemo
 
         final DelayQueue<DeTask> deTaskDelayQueue = new DelayQueue<DeTask>(deTaskList);
 
-        new Thread()
+        Thread thread = new Thread()
         {
             @Override
             public void run()
@@ -67,7 +67,18 @@ public class SimpleDelayQueueDemo
                     System.out.println("exiting via interrupt");
                 }
             }
-        }.start();
+        };
+        thread.start();
+
+        try
+        {
+            TimeUnit.SECONDS.sleep(10);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+        thread.interrupt();
     }
 }
 
