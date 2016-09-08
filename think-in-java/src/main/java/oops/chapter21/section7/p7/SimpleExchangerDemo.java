@@ -81,5 +81,15 @@ public class SimpleExchangerDemo
         list1 after exchanger: {6, 7, 8, 9, }
         */
 
+        try
+        {
+            TimeUnit.SECONDS.sleep(7);
+            executorService.shutdownNow();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }
