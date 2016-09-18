@@ -8,6 +8,7 @@
   <modules>
     <module>think-in-java</module>
     <module>learning-sql</module>
+    <module>collections</module>
   </modules>
   <packaging>pom</packaging>
 
