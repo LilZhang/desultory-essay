@@ -10,6 +10,12 @@ package oops.references;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.CharBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Description:
@@ -21,11 +27,16 @@ import java.io.RandomAccessFile;
  */
 public class App13
 {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public static void main(String[] args)
     {
-        randomAccessFileRW();
+//        randomAccessFileRW();
+        randomAccessFileRWNio();
     }
 
+    // FIXME: 2016/9/21 有点懵逼啊
+    @Deprecated
     private static void randomAccessFileRW()
     {
         // r:   只读
@@ -47,7 +58,7 @@ public class App13
             int pos = sb.indexOf("一");
             String substring = sb.substring(pos);
             randomAccessFile.seek(pos);
-            String input = "[break in by RandomAccessFile]\n" + substring;
+            String input = "[break in by RandomAccessFile " + sdf.format(new Date()) + "]\n" + substring;
             randomAccessFile.write(input.getBytes("UTF-8"));
 
             StringBuilder result = new StringBuilder();
@@ -75,6 +86,48 @@ public class App13
                 try
                 {
                     randomAccessFile.close();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    // FIXME: 2016/9/21 有点懵逼啊
+    @Deprecated
+    private static void randomAccessFileRWNio()
+    {
+        FileChannel channel = null;
+        try
+        {
+            channel = new RandomAccessFile("E:\\DESKTOP\\io.txt", "rw").getChannel();
+            MappedByteBuffer mappedByteBuffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, channel.size());
+            CharBuffer charBuffer = Charset.forName("UTF-8").decode(mappedByteBuffer);
+            while (charBuffer.hasRemaining())
+            {
+                if (charBuffer.get() == '一')
+                {
+                    String subString = new String(charBuffer.subSequence(
+                            charBuffer.position(), charBuffer.length() - 1).array());
+                    charBuffer.append("[break in by RandomAccessFile nio & mappedByteBuffer " + sdf.format(new Date()) + "]\n");
+                    charBuffer.append(subString);
+                    break;
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            if (channel != null)
+            {
+                try
+                {
+                    channel.close();
                 }
                 catch (IOException e)
                 {

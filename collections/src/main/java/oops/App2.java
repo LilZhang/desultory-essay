@@ -7,8 +7,8 @@
 
 package oops;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Description:
@@ -22,7 +22,15 @@ public class App2
 {
     public static void main(String[] args)
     {
-        List<String> list = new ArrayList<>();
+        String string = "";
+
+        Comparator<String> objectComparator = Collections.<String>reverseOrder();
+
+    }
+
+    private static void doSomething()
+    {
+
     }
 }
 
