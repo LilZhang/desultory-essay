@@ -9,6 +9,7 @@
     <module>think-in-java</module>
     <module>learning-sql</module>
     <module>collections</module>
+      <module>inside-the-java-virtual-machine</module>
   </modules>
   <packaging>pom</packaging>
 
