@@ -19,6 +19,7 @@
 
 ## 装载
 - 由 ClassLoader 读取 .class 文件(启动 or 自定义)
+- Class<?> defineClass(String name, byte[] classData, int off, int len)
 1. 通过完全限定名产生二进制流
 2. 解析二进制流并存入方法区 (.class 的常量池到该类的运行时常量池)
 3. 在堆中创建一个该类的 java.lang.Class 实例
@@ -30,6 +31,8 @@
 ## 连接
 - 把 .class 文件中的数据合并入 jvm
 - 三个子步骤
+
+// protected final void resolveClass(Class<?> c)
 
 ### 验证
 - 检查 .class 中的数据(以下简称数据)是否格式正确等
