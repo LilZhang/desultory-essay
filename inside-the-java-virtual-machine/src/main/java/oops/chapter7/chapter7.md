@@ -26,7 +26,7 @@
 
 - 装载时的验证
 1. 格式
-2. 装载该类的时候需确保父类已被装载
+2. 装载该类的时候需确保父类已被装载 // ?
 
 ## 连接
 - 把 .class 文件中的数据合并入 jvm
@@ -140,8 +140,18 @@
 - 启动类装载器(BOOTSTRAP)装载的类永远可被触及，所以永远不会被卸载
 - 若某个类的 class 对象无法被 GC 触及，则该类是不可触及的 (被 GC 触及是什么情况？)
 
+- 某个类会被卸载的例子
+```
+MyClassLoader myClassLoader = new MyClassLoader();
+Class<?> clazz = myClassLoader.loadClass("some.other.Classes");
+some.other.Classes classesObj = (some.other.Classes) clazz.newInstance();
 
+myClassLoader = null;
+classesObj = null;
+clazz = null;
+```
 
+然后 some.other.Classes 这个类因为无法被触及，于是被卸载了。
 
 
 
