@@ -501,7 +501,7 @@ public class App9
                 byteBuffer.flip();
                 CharBuffer charBuffer = Charset.forName(CHARSET).decode(byteBuffer);
                 sb.append(charBuffer);
-                byteBuffer.flip();
+                byteBuffer.clear();
             }
             System.out.println(sb.toString());
         }

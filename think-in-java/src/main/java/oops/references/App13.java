@@ -96,6 +96,7 @@ public class App13
     }
 
     // FIXME: 2016/9/21 有点懵逼啊
+    // TODO: 16-10-26 bug?
     @Deprecated
     private static void randomAccessFileRWNio()
     {
