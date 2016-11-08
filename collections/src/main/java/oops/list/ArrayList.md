@@ -1,4 +1,5 @@
 ## ArrayList
+1. 初始大小为10， 1.5 倍 扩容
 
 1. ArrayList 大体上近似于 Vector。(Vector 线程安全，ArrayList 线程不安全)
 
