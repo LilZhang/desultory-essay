@@ -7,6 +7,9 @@
 
 package oops;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Description:
  * <p/>
@@ -17,19 +20,35 @@ package oops;
  */
 public class App2
 {
-    private static final int MAXIMUM_CAPACITY = 1 << 30;
+    private static Set<Integer> set = new HashSet<Integer>();
+
+    static
+    {
+        set.add(15);
+        set.add(22);
+        set.add(40);
+        set.add(12);
+        set.add(32);
+        set.add(1);
+        set.add(27);
+        set.add(11);
+        set.add(3);
+        set.add(20);
+        set.add(8);
+    }
 
     public static void main(String[] args)
     {
-        roundUpToPowerOf2(3);
-
-        System.out.println();
+        System.out.println(getNum());
     }
 
-    private static int roundUpToPowerOf2(int number) {
-        // assert number >= 0 : "number must be non-negative";
-        return number >= MAXIMUM_CAPACITY
-                ? MAXIMUM_CAPACITY
-                : (number > 1) ? Integer.highestOneBit((number - 1) << 1) : 1;
+    private static int getNum()
+    {
+        int x = ((int) (Math.random() * 39)) + 1;
+        if (set.contains(x))
+        {
+            return getNum();
+        }
+        return x;
     }
 }

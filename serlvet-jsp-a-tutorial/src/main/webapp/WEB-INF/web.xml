@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>Servlet JSP: A Tutorial</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>param_from_webxml</param-name>
+        <param-value>value</param-value>
+    </context-param>
+
+
+
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>oops.chapter1.httpservlet.AjaxServlet</servlet-class>
+        <!-- load-on-startup 可以设置 servlet 早加载，即在启动容器时加载 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/ajax_servlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <listener>
+        <listener-class>oops.chapter8.servletcontext.MyServletContextAttributeListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>oops.chapter17.dynamic.MyLazyloadServletContextListener</listener-class>
+    </listener>
+
+    <!-- 在 web.xml 中管理 Filter 的好处 -->
+    <!-- 可以指定 Filter 顺序 -->
+    <!-- 先配置的先过滤 -->
+    <filter>
+        <filter-name>FilterXML</filter-name>
+        <filter-class>oops.chapter9.FilterXML</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>key1</param-name>
+            <param-value>value1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key2</param-name>
+            <param-value>value2</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterXML</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>XMLAsyncServlet</servlet-name>
+        <servlet-class>oops.chapter14.asyncservlet.XMLAsyncServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>XMLAsyncServlet</servlet-name>
+        <url-pattern>/xml_servlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <error-page>
+        <exception-type>java.lang.RuntimeException</exception-type>
+        <location>/500.html</location>
+    </error-page>
+</web-app>

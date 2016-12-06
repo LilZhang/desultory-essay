@@ -9,7 +9,8 @@
     <module>think-in-java</module>
     <module>learning-sql</module>
     <module>collections</module>
-      <module>inside-the-java-virtual-machine</module>
+    <module>inside-the-java-virtual-machine</module>
+    <module>serlvet-jsp-a-tutorial</module>
   </modules>
   <packaging>pom</packaging>
 

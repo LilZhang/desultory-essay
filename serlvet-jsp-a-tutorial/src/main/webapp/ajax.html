@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test ajax</title>
+
+</head>
+<body>
+<div id="append">
+    <button id="test" onclick="ajax();">ajax</button>
+</div>
+<script type="text/javascript" src="./assets/js/jquery-1.12.0.js"></script>
+<script>
+    function ajax() {
+        var url = "/tutorial/ajax_servlet"
+        var $div = $('#append');
+        $.ajax(url, {
+            data: {
+                data: "lalala"
+            },
+            type: "GET",
+            dataType: "json"
+        }).always(function () {
+        }).done(function (data) {
+            $div.append("<div><a title="+data.msg+">"+data.data+"</a></div>");
+        }).fail(function () {
+        });
+    }
+</script>
+
+</body>
+</html>

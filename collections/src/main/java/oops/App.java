@@ -1,6 +1,5 @@
 package oops;
 
-import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -11,24 +10,31 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!!!!" );
-        System.out.println( new Date().getTime());
+        int i = Integer.MAX_VALUE;
+        String s = Integer.toBinaryString(i);
+        System.out.println("i: " + s);
+        System.out.println("bit len: " + s.length());
 
-        IterableObj<String> iterableObj =
-                new IterableObj<String>(new String[]{"aaa", "bbb", "ccc", "ddd"});
+        int ip = i + 345654;
 
-        for (String s : iterableObj)
+        System.out.println("i > ip: " + (i > ip));
+        System.out.println("ip - i: " + (ip - i));
+    }
+
+    private static int get1s(int i)
+    {
+        int cnt = 0, n = 1;
+
+        while (i >= n)
         {
-            System.out.println(s);
+            if ((i & n) == n)
+            {
+                cnt++;
+            }
+            n <<= 1;
         }
 
-        IterableObj<Integer> iterableObj1 =
-                new IterableObj<Integer>(new Integer[]{1,2,666,888,999,3});
-
-        for (Integer integer : iterableObj1)
-        {
-            System.out.println(integer);
-        }
+        return cnt;
     }
 }
 
