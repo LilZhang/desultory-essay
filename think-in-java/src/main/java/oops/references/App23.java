@@ -7,11 +7,17 @@
 
 package oops.references;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Description:
@@ -23,25 +29,69 @@ import java.lang.reflect.Method;
  */
 public class App23
 {
+    private static final String PATH = "oops.zanno.obj";
+
     public static void main(String[] args)
     {
-        try
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        URL url = classLoader.getResource(PATH.replace('.', '/'));
+        System.out.println(url.getPath());
+        String file = url.getFile();
+        File[] classFiles = new File(file).listFiles(new FilenameFilter()
         {
-            Class<?> clazz = Class.forName("oops.references.App23");
-            Object o = clazz.newInstance();
-            Method[] methods = clazz.getMethods();
-            for (Method method : methods)
+            public boolean accept(File dir, String name)
             {
-                Demo annotation = method.getAnnotation(Demo.class);
-                if (annotation != null)
+                if (name.endsWith(".class"))
                 {
-                    method.invoke(o);
+                    return true;
                 }
+                return false;
+            }
+        });
+
+        List<Class<?>> classList = new ArrayList<Class<?>>(classFiles.length);
+        for (File classFile : classFiles)
+        {
+            try
+            {
+                String classFileName = classFile.getName();
+                String className = classFileName.substring(0, classFileName.lastIndexOf('.'));
+                Class<?> aClass = Class.forName(PATH + "." + className);
+                classList.add(aClass);
+            }
+            catch (ClassNotFoundException e)
+            {
+                e.printStackTrace();
             }
         }
-        catch (Exception e)
+
+        for (Class<?> aClass : classList)
         {
-            e.printStackTrace();
+            Method[] methods = aClass.getMethods();
+            for (Method method : methods)
+            {
+                Demo demo = method.getAnnotation(Demo.class);
+                if (demo != null)
+                {
+                    try
+                    {
+                        Object object = aClass.newInstance();
+                        method.invoke(object);
+                    }
+                    catch (IllegalAccessException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (InstantiationException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (InvocationTargetException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
     }
 

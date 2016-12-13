@@ -95,12 +95,12 @@ Cindy		(初始类装载器)
 - 检查当前类装载器是否为该数组类的初始类装载器。若是，则使用同样的类。
 - 若不是，则用当前装载器装载元素类 (此例中是 java/lang/Integer)
 - 确定维数
-- 创建该数组类的Class实例，将```当前类装载器```定义为该数组类的定义类装载器
+- 创建该数组类的Class实例，将`当前类装载器`定义为该数组类的定义类装载器
 
 2. 若为基本类型数组： eg. [I
 - 检查当前类装载器是否为该数组类的初始类装载器。若是，则使用同样的类。
 - 若不是，则立即创建关于 I 的新数组类，并确定维度
-- 创建该数组类的Class实例，将```启动类装载器```定义为该数组类的定义类装载器
+- 创建该数组类的Class实例，将`启动类装载器`定义为该数组类的定义类装载器
 
 
 #### 指向非数组类与接口
@@ -135,8 +135,8 @@ snapshot:
 - 装载后检查字节码，查看父类是否被装载。若没有被装载则装载父类，一直到Object
 // 父类在该类的 super_class 中，该入口也是 CONSTANT_Class 。。。于是又开始了(递归)
 
-- 从Object返回途中，再依次检查每个父类是否实现接口。若有，则```装载```该接口
-- 若接口有父接口，```装载```其父接口，以此类推
+- 从Object返回途中，再依次检查每个父类是否实现接口。若有，则`装载`该接口
+- 若接口有父接口，`装载`其父接口，以此类推
 // 接口在该类的 interfaces 中，该入口也是 CONSTANT_Class 。。。于是又开始了(递归)
 
 可能会出现的错误(Error)
@@ -188,8 +188,8 @@ snapshot:
 2. 对于 CONSTANT_Fieldref 的 CONSTANT_NameAndType 的解析
 - 在已解析的被引用的 CONSTANT_Class 中 查找 对应名字与类型的 字段
 - 若有，则查找成功并作为结果，标记为已解析，并这个常量池入口存入这个字段的直接引用
-- 若无，查找 在已解析的被引用的 CONSTANT_Class 的```接口(与之父接口)```
-- 若无，查找 在已解析的被引用的 CONSTANT_Class 的```父类(递归至所有父类)```
+- 若无，查找 在已解析的被引用的 CONSTANT_Class 的`接口(与之父接口)`
+- 若无，查找 在已解析的被引用的 CONSTANT_Class 的`父类(递归至所有父类)`
 - 再没有，查找失败。			Error: NoSuchFieldError
 - 若找到，但是权限不对，查找失败。	Error: IllegalAccessError
 
@@ -200,8 +200,8 @@ snapshot:
 2. 对于 CONSTANT_Methodref 的 CONSTANT_NameAndType 的解析
 - 在已解析的被引用的 CONSTANT_Class 中 查找 对应名字与类型的 方法
 - 若有，则查找成功并作为结果，标记为已解析，并这个常量池入口存入这个方法的直接引用
-- 若无，查找 在已解析的被引用的 CONSTANT_Class 的```父类(递归至所有父类)```
-- 若无，查找 在已解析的被引用的 CONSTANT_Class 的```接口(与之父接口)```	// 顺序与 CONSTANT_Fieldref 略有不同
+- 若无，查找 在已解析的被引用的 CONSTANT_Class 的`父类(递归至所有父类)`
+- 若无，查找 在已解析的被引用的 CONSTANT_Class 的`接口(与之父接口)`	// 顺序与 CONSTANT_Fieldref 略有不同
 - 再没有，查找失败。			Error: NoSuchMethodError
 - 若找到，但是方法是抽象方法，查找失败。	Error: AbstractMethodError
 - 若找到，但是权限不对，查找失败。	Error: IllegalAccessError

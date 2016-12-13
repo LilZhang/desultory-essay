@@ -35,6 +35,16 @@ public class App2
         set.add(3);
         set.add(20);
         set.add(8);
+        set.add(23);
+        set.add(24);
+        set.add(29);
+        set.add(26);
+        set.add(5);
+        set.add(33);
+        set.add(41);
+        set.add(17);
+        set.add(6);
+        set.add(36);
     }
 
     public static void main(String[] args)
@@ -44,7 +54,7 @@ public class App2
 
     private static int getNum()
     {
-        int x = ((int) (Math.random() * 39)) + 1;
+        int x = ((int) (Math.random() * 43)) + 1;
         if (set.contains(x))
         {
             return getNum();

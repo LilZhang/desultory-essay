@@ -1,0 +1,502 @@
+	312 376 272 276  
+         ca  fe  ba  be		
+	// magic number
+
+	\0  \0  \0   3  
+	00  00  00  33  
+	// minor_version:	0x00	0
+	// major_version:	0x33	51
+	// 51.0 (Java SE 7)
+
+	\0   +  
+	00  2b  
+	// constant_pool_count: 0x2b	43
+
+	\n  \0  \v  \0 024  
+	0a  00  0b  00  14 
+	// index:			#01 // start from 01
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x000b	#11
+	// name_and_type_index:	0x0014	#20
+
+	\t  \0 025  \0 026
+	09  00  15  00  16
+	// index:			#02
+	// tag:			0x09	CONSTANT_Fieldref(09)
+	// class_index:		0x0015	#21
+	// name_and_type_index:	0x0016	#22
+
+	\a  \0 027  
+	07  00  17  
+	// index:			#03
+	// tag:			0x07	CONSTANT_Class(07)
+	// name_index:		0x0017	#23
+
+	\n  \0 003  \0 024
+	0a  00  03  00  14
+	// index:			#04
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x0003	#3
+	// name_and_type_index:	0x0014	#20
+
+	\b  \0 030  
+	08  00  18  
+	// index:			#05
+	// tag:			0x08	CONSTANT_String(08)
+	// string_index:	0x0018	#24
+
+	\n  \0 003  \0 031  
+	0a  00  03  00  19  
+	// index:			#06
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x0003	#03
+	// name_and_type_index:	0x0019	#25
+
+	\n  \0 003  \0 032  
+	0a  00  03  00  1a  
+	// index:			#07
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x0003	#3
+	// name_and_type_index:	0x001a	#26
+
+	\n  \0 003  \0 033
+	0a  00  03  00  1b
+	// index:			#08
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x0003	#3
+	// name_and_type_index:	0x001b	#27
+
+	\n  \0  034  \0 035
+	0a  00  1c  00  1d  
+	// index:			#09
+	// tag:			0x0a	CONSTANT_Methodref(10)
+	// class_index:		0x001c	#28
+	// name_and_type_index:	0x001d	#29
+
+	\a  \0 036
+	07  00  1e
+	// index:			#10
+	// tag:			0x07	CONSTANT_Class(07)
+	// name_index:		0x001e	#30
+
+	\a  \0 037 
+	07  00  1f  
+	// index:			#11
+	// tag:			0x07	CONSTANT_Class(07)
+	// name_index:		0x001f	#31
+
+	001  \0 006   <   i   n   i   t   > 
+	 01  00  06  3c  69  6e  69  74  3e
+	// index:			#12
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0006	6
+	// bytes:			<init>
+        
+
+	001  \0 003   (   )   V 
+	 01  00  03  28  29  56
+	// index:			#13
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0003	3
+	// bytes:			()V
+
+	001  \0 004   C   o   d   e
+	 01  00  04  43  6f  64  65
+	// index:			#14
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0004	4
+	// bytes:			Code
+
+	001  \0 017   L   i   n   e   N   u   m   b   e   r   T   a   b   l   e
+	 01  00  0f  4c  69  6e  65  4e  75  6d  62  65  72  54  61  62  6c  65
+	// index:			#15
+	// tag:			0x01	CONSTANT_Utf(01)
+	// length:		0x000f	15
+	// bytes:			LineNumberTable
+        
+	001  \0 004   m   a   i   n 
+	 01  00  04  6d  61  69  6e  
+	// index:			#16
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0004	4
+	// bytes:			main
+
+	001  \0 026   (   [   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   ;   )   V
+	 01  00  16  28  5b  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  3b  29  56  
+	// index:			#17
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0016	22
+	// bytes:			([Ljava/lang/String;)V
+
+	001  \0  \n   S   o   u   r   c   e   F   i   l   e 
+	 01  00  0a  53  6f  75  72  63  65  46  69  6c  65
+	// index:			#18
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x000a	10
+	// bytes:			SourceFile
+
+	001  \0  017   H   e   l   l   o   W   o   r   l   d   .   j   a   v   a
+	 01  00   0f  48  65  6c  6c  6f  57  6f  72  6c  64  2e  6a  61  76  61
+	// index:			#19
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x000f	15
+	// bytes:			HelloWorld.java
+        
+	\f  \0  \f  \0  \r  
+        0c  00  0c  00  0d  
+	// index:			#20
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x000c	#12
+	// descriptor_index:	0x000d	#13
+
+	\a  \0      
+	07  00  20  
+	// index:			#21
+	// tag:			0x07	CONSTANT_Class(07)
+	// name_index:		0x0020	#32
+
+	\f  \0   !  \0   " 
+	0c  00  21  00  22  
+	// index:			#22
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x0021	#33
+	// descriptor_index:	0x0022	#34
+
+	001  \0 027   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   B   u   i   l   d   e   r 
+	 01  00  17  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  42  75  69  6c  64  65  72  
+	// index:			#23
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0017	23
+	// bytes:			java/lang/StringBuilder
+
+	001  \0  \v   H   e   l   l   o       W   o   r   l   d  
+	 01  00  0b  48  65  6c  6c  6f  20  57  6f  72  6c  64  
+	// index:		#24
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x000b	11
+	// bytes:			Hello World
+
+
+	\f  \0   #  \0   $  
+	0c  00  23  00  24  
+	// index:			#25
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x0023	#35
+	// descriptor_index:	0x0024	#36
+
+	\f  \0   #  \0   %  
+	0c  00  23  00  25  
+	// index:			#26
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x0023	#35
+	// descriptor_index:	0x0025	#37
+
+	\f  \0   &  \0   '  
+	0c  00  26  00  27  
+	// index:			#27
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x0026	#38
+	// descriptor_index:	0x0027	#39
+        
+
+	\a  \0   (
+	07  00  28
+	// index:			#28
+	// tag:			0x07	CONSTANT_Class(07)
+	// name_index:		0x0028	#40
+
+	\f  \0   )  \0   * 
+	0c  00  29  00  2a  
+	// index:			#29
+	// tag:			0x0c	CONSTANT_NameAndType(12)
+	// name_index:		0x0029	#41
+	// descriptor_index:	0x002a	#42
+
+	001  \0 032   o   o   p   s   /   d   e   m   o   /   t   1   0   0   4   /   H   e   l   l   o   W   o   r   l   d 
+	 01  00  1a  6f  6f  70  73  2f  64  65  6d  6f  2f  74  31  30  30  34  2f  48  65  6c  6c  6f  57  6f  72  6c  64  
+	// index:			#30
+        // tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x001a	26
+	// bytes:			oops/demo/t1004/HelloWorld
+	
+        
+
+
+	001  \0 020   j   a   v   a   /   l   a   n   g   /   O   b   j   e   c   t 
+	 01  00  10  6a  61  76  61  2f  6c  61  6e  67  2f  4f  62  6a  65  63  74  
+	// index:			#31
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0010	16
+	// bytes:			java/lang/Object
+        
+
+
+	001  \0 020   j   a   v   a   /   l   a   n   g   /   S   y   s   t   e   m 
+	 01  00  10  6a  61  76  61  2f  6c  61  6e  67  2f  53  79  73  74  65  6d  
+	// index:			#32
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0010	16
+	// bytes:			java/lang/System
+        
+
+
+	001  \0 003   o   u   t 
+	 01  00  03  6f  75  74  
+	// index:			#33
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0003	3
+	// bytes:			out
+        
+
+	001  \0 025   L   j   a   v   a   /   i   o   /   P   r   i   n   t   S   t   r   e   a   m   ; 
+	 01  00  15  4c  6a  61  76  61  2f  69  6f  2f  50  72  69  6e  74  53  74  72  65  61  6d  3b  
+	// index:			#34
+	// tag:			0x01	CONSTANT_Utf(01)
+	// length:		0x0015	21
+	// bytes:			Ljava/io/PrintStream;
+        
+
+
+	001  \0 006   a   p   p   e   n   d 
+	 01  00  06  61  70  70  65  6e  64  
+	// index:			#35
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0006	6
+	// bytes:			append
+        
+
+
+	001  \0   -   (   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   ;   )   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   B   u   i   l   d   e   r   ; 
+	 01  00  2d  28  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  3b  29  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  42  75  69  6c  64  65  72  3b  
+	// index:			#36
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x002d	45
+	// bytes:			(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+
+	001  \0 034   (   I   )   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   B   u   i   l   d   e   r   ; 
+	 01  00  1c  28  49  29  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  42  75  69  6c  64  65  72  3b  
+	// index:			#37
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x001c	28
+	// bytes:			(I)Ljava/lang/StringBuilder;
+        
+	
+        
+
+
+	001  \0  \b   t   o   S   t   r   i   n   g
+	 01  00  08  74  6f  53  74  72  69  6e  67
+	// index:			#38
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0008	8
+	// bytes:			toString
+
+	001  \0 024   (   )   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   ; 
+         01  00  14  28  29  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  3b  
+	// index:			#39
+        // tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0014	20
+	// bytes:			()Ljava/lang/String;
+
+
+	001  \0 023   j   a   v   a   /   i   o   /   P   r   i   n   t   S   t   r   e   a   m 
+	 01  00  13  6a  61  76  61  2f  69  6f  2f  50  72  69  6e  74  53  74  72  65  61  6d  
+	// index:			#40
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0013	19
+	// bytes:			java/io/PrintStream
+        
+
+
+	001  \0  \a   p   r   i   n   t   l   n 
+	 01  00  07  70  72  69  6e  74  6c  6e  
+	// index:			#41
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0007	7
+	// bytes:			println
+        
+
+
+	001  \0 025   (   L   j   a   v   a   /   l   a   n   g   /   S   t   r   i   n   g   ;   )   V  
+	 01  00  15  28  4c  6a  61  76  61  2f  6c  61  6e  67  2f  53  74  72  69  6e  67  3b  29  56  
+	// index:			#42
+	// tag:			0x01	CONSTANT_Utf8(01)
+	// length:		0x0015	21
+	// bytes:			(Ljava/lang/String;)V
+        
+
+
+	\0
+	00  20
+	// access_flags: 	0x0020	ACC_SUPER(0x0020)
+
+	\0  \n  
+	00  0a  
+	// this_class:		0x000a	#10
+
+	\0  \v  
+	00  0b  
+	// super_class:		0x000b	#11
+
+	\0  \0  
+	00  00  
+	// interfaces_count:	0x0000	0
+
+
+	// place of interface list
+	// no interfaces
+
+
+	\0  \0  
+	00  00  
+	// fields_count:	0x0000	0
+
+	// place of field list
+	// no fields
+
+	\0 002  
+	00  02  
+	// methods_count:	0x0002	2
+
+	\0  \0  \0  \f  \0  \r  \0 001  
+	00  00  00  0c  00  0d  00  01  
+	// method <init>
+	// access_flags:	0x0000	???
+	// name_index:		0x000c	#12
+	// descriptor_index:	0x000d	#13
+	// attributes_count:	0x0001	1
+
+	// attribute_info of method <init>
+
+	\0 016  
+	00  0e  
+	// attribute_name_index:0x000e	#14
+
+	\0  \0  \0 035  
+	00  00  00  1d  
+	// attribute_length:	0x0000001d 29
+
+
+	\0 001  \0 001  \0  \0  \0 005
+	00  01  00  01  00  00  00  05
+	// max_stack:		0x0001	1
+	// max_locals:		0x0001	1
+	// code_length:		0x00000005 5
+
+
+	 * 267  \0 001 261  
+	2a  b7  00  01  b1  
+	// code
+
+
+	\0  \0  
+	00  00  
+	// exception_table_length:0x0000 0
+
+	// place of exception_table
+	// no exception list
+
+
+	\0 001 
+	00  01
+	// attributes_count:	0x0001	1
+
+
+
+
+	\0 017  
+	00  0f  
+	// attribute_name_index:0x000f	#15
+
+	\0  \0  \0 006
+	00  00  00  06
+	// attribute_length:	0x00000006 6
+
+	
+
+	\0 001  
+        00  01  
+	// line_number_table_length:0x0001	1
+
+
+	\0  \0  \0 003
+	00  00  00  03  
+	// start_pc:	0x0000	0
+	// line_number:	0x0003	3
+
+
+	\0  \t  \0 020  \0 021  \0 001
+	00  09  00  10  00  11  00  01
+	// method main
+	// access_flags:	0x0009	9 ??? added?
+	// name_index:		0x0010	#16
+	// descriptor_count:	0x0011	#17
+	// attributes_count:	0x0001	1
+
+	\0 016
+	00  0e
+	// attribute_name_index:0x000e #14
+
+	\0  \0  \0   C  
+        00  00  00  43  
+	// attribute_length:	0x00000043 67
+
+
+\0 003  \0 002  \0  \0  \0 037 004   < 204 001
+00  03  00  02  00  00  00  1f  04  3c  84  01
+
+
+// 12
+
+	001 262  \0 002 273  \0 003   Y 267  \0 004 022 005 266  \0 006
+         01  b2  00  02  bb  00  03  59  b7  00  04  12  05  b6  00  06
+
+
+// 28
+
+	033 266  \0  \a 266  \0  \b 266  \0  \t 261  \0  \0  \0 001  \0
+         1b  b6  00  07  b6  00  08  b6  00  09  b1  00  00  00  01  00
+
+
+// 44
+
+	017  \0  \0  \0 022  \0 004  \0  \0  \0  \a  \0 002  \0  \b  \0
+         0f  00  00  00  12  00  04  00  00  00  07  00  02  00  08  00
+
+// 60
+
+
+	005  \0  \t  \0 036  \0  \n
+         05  00  09  00  1e  00  0a  
+
+// end of 67
+
+	\0 001
+	00  01
+	// attrubutes_count:	0x0001	1
+
+	\0 022  \0  \0  \0 002  
+	00  12  00  00  00  02
+	// attribute_name_index:0x0012	#18
+	// attribute_length:	0x00000002 2
+
+
+	\0 023
+	00  13
+
+// end 0f 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+

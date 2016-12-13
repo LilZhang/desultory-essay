@@ -1,0 +1,336 @@
+part 2
+
+2.2.5
+P42
+- 方法区在 HotSpot 中又被称之为 "永久代"
+- 除了 HotSpot 之外的别的JVM 不一定会在方法区中做 GC, 所以"永久代"不一定等同于方法区
+
+2.2.6
+- 每个类的常量池在内存(方法区)中为运行时常量池，该运行时常量池可更改，最常见的是 String.intern()
+
+2.3.1
+- 对多线程同时在一块内存上分配导致失败的解决方案: 给每个线程都分配一个 "本地线程分配缓冲" (TLAB)
+
+2.3.2
+- HotSpot 中对象的内存布局: 对象头，实例数据，对齐填充(补位用)
+- 对象头: HashCode, GC代年龄，锁状态，线程持有的锁，偏向线程ID，偏向时间戳。还有指向类元数据的指针。(若是数组)还有数组长度
+- 对象头大小: 一个 word
+
+2.3.3
+- 如何指向对象: 使用句柄，使用直接指针
+- GC Roots: GC 根对象
+
+2.4
+- 调整 Heap 大小的参数: -Xms(最小) -Xmx(最大)
+- 调整 Stack 大小的参数: -Xss
+- 调整"永久代"(即方法区)的参数: -XX:MaxPermSize  -XX:PermSize
+
+3.2.2
+- 通过"可达性分析"来判断一个对象是否需要被回收
+- 从"GC Roots"开始查看引用链, 不在链中的即可以被回收
+- 以下对象可以作为 GC Roots
+1. JVM 栈中 局部变量表 引用的对象
+2. 方法区中类的静态字段引用的对象
+3. 方法区中常量引用的对象
+4. 本地方法栈中(native)引用的对象
+
+3.2.4
+- GC 需要两次扫描过程: 分别位于 finalize() 执行的前后，finalize() 只执行一次(检查是否有复活情况)
+
+3.2.5
+- 方法区中回收类 A 的条件如下:
+1. A 没有任何实例
+2. A 的 ClassLoader 已被回收
+3. A 的 Class 对象不被引用
+
+3.3
+- GC 算法及使用场景
+F1. 引用计数: 互相引用怎么办
+F2. 可达性分析
+1. 标记-清除 (Mark-Sweep) : 碎片化严重
+2. 复制 (Copying) : 使用两块内存，来回拷贝，降低内存的使用率
+- 新生代中的 GC 使用该策略
+- 新生代内存按照 Eden(80%) survivor 1(10%) survivor 2(10%) 划分
+- 每次将 Eden 与 survivor之一 Copying 到另一个 survivor 上
+- 若另一个 survivor 空间不够，这些对象直接进入老年代
+3. 标记-整理 (Mark-Compact)
+- 老年代的 GC 使用该策略
+- 将所有存活的对象往一端移动，然后清理掉边界外的空间
+4. 总结
+- 大部分对象存活时间短: 可以使用 复制 (Copying) 策略
+- 大部分对象存活时间长: 可以使用 标记-整理 (Mark-Compact) 策略
+
+3.4
+- HotSpot 的 GC 算法实现
+1. 分析: 可达性分析，定位
+- hotspot 有一个 map 维护
+- 在安全点(safe point) 或者 在安全域(safe region)内分析
+2. 垃圾收集: 使用垃圾收集器
+- Serial 收集器(新生代) + Serial Old 收集器(老年代)
+- ParNew 收集器(新生代) + CMS 收集器(老年代)
+- Parallel Scavenge 收集器(新生代) + Parallel Old 收集器(老年代)	// 可控的吞吐量
+- Garbage-First(G1) 收集器(overall)
+
+3.6 
+- Minor GC (Young GC): 新生代收集，相对频繁，速度较慢
+- Major GC (Full GC) : 老年代收集，速度比 YGC 慢十倍以上，一般会伴随一次 YGC // 这两次 GC 一起为一次 Full GC
+
+3.6.1
+- 对象在 新生代 Eden 中分配，若 Eden 无足够空间则发起一次 Minor GC
+
+3.6.2
+- (-XX:PretenureSizeThreshold=3145728) 该参数可以设置一个阈值，大于这个阈值的对象被直接分配至老年代
+- 这样可以防止大对象在 YGC 时被无谓的拷贝来拷贝去
+- 。。。。。。Parallel Scavenge 无这个参数 // 擦
+
+3.6.3
+- 每个对象有一个 Age
+- 对象在 Eden 中被创建
+- 若该对象经历了一次 GC 后依然存活，被移动到 survivor，并且 Age++  // 由复制(copying)算法很容易得出
+- 晋升老年代有个阈值 默认 15 (岁)，进入老年代 // 可通过 (-XX:MaxTenuringThreshold=15) 来设置
+- 动态年龄阈值: 若 Survivor 中有一半空间内的对象为 X 岁(X < 15), 则所有 大于等于X 的对象可进入老年代
+
+3.6.5
+- (老年代的)担保失败: 老年代中无法有更多连续空间供新晋升的对象，遂 Full GC
+
+
+
+
+
+7.4.2
+- 从开发者视角来说，有三种类加载器:
+1. 启动类加载器: <JAVA_HOME>/lib
+	^
+	|
+2. 扩展类加载器: <JAVA_HOME>/lib/ext
+	^
+	|
+3. 应用程序类加载器: <CLASSPATH>	// 这个是 ClassLoader.getSystemClassLoader()的返回
+	^
+	|
+
+8.2 栈帧补充:
+1. 动态链接	// 见 8.2.3
+2. 返回地址
+
+8.2.1
+- 局部变量表: 方法参数 & 方法中局部变量 (字长单位在该书中称为 slot (槽))
+- 因为栈帧是线程私有的，所以 slot 的 字切割(long, double) 在多线程中其实没什么威胁
+- 在局部变量使用后给其赋 null 的由来: 
+1. 因为 该 slot 是 GC Roots 之一
+2. 若之后的操作比较耗时，该 slot 不会被立即 GC
+3. 若其中有大应用，容易造成内存浪费
+4. 若手动 = null，可在该情况下对 GC 有好处
+
+- 但是现在有了 JIT ，经过 JIT 之后的 = null 会被消除
+- 所以基本没有什么用
+
+- 局部变量需要手动赋值，不像类(或实例)初始化有两次赋值的机会(准备/初始化)
+- 所以 `int a； sout(a)` 会报编译错误: 没有初始化局部变量
+
+8.2.3
+- 动态链接极有可能和 静态绑定 动态绑定 有关（然）
+- 动态链接是栈帧指向动态常量池中该方法的引用
+1. 静态解析: 在类加载或第一次使用(总之是解析阶段)就将 方法 的`符号引用`解析为`直接引用(句柄)`
+2. 动态链接: 在每一次运行期间解析(直接引用)
+
+8.3
+- invokestatic(静态方法)							// 一定静态绑定
+- invokespecial(构造器，私有方法，父类方法)	// 这四种方法统称 非虚方法	// 一定静态绑定
+- invokevirtual(虚方法)								// 不一定(比如接下来的重载与重写)
+- invokeinterface(接口方法)							// 不
+- final方法虽然也用 invokevirtual, 但实际上不会再变(被覆盖)。在规范中是非虚方法
+- invokedynamic	// ???								// 新增的指令
+
+
+
+//	253 @_@
+
+
+```
+class Human {...}
+class Man extends Human {...}
+class Woman extends Human {...}
+
+Human w = new Woman();
+Human m = new Man();
+```
+
+`Human` 为 w 的 静态类型 (static type)，编译期可知
+`Woman` 为 w 的 实际类型 (actual type)，运行时确定
+
+若有如下方法
+
+```
+void handle(Human human) {...}
+void handle(Man man) {...}
+void handle(Woman woman) {...}
+```
+
+并调用 `handle(w);`
+
+调用的是 `void handle(Human human)`, 编译器会以其静态类型为依据 `invokevirtual` handle:(LHuman;)V
+// 此为 重载 的底层实现，重载的方法形参类型由静态类型决定，静态类型编译期可知，可直接编译进 .class 文件
+// 附: 关于静态类型是 基本类 的情况，如何选择对应的重载方法: 按照以下顺序之一进行优先选择，(其实就是向上转型/安全转型)
+- byte -> short -> int -> long -> float -> double -> 包装类 -> (父类或者接口，但不能同时有) -> Object -> 变长...(变长数组元素类型按照之前的顺序)
+- 或者 char -> int -> ............
+//
+
+
+```
+class Human { void doSomething() {sout("Human");} }
+class Man extends Human { @override void doSomething() {sout("Man");} }
+class Woman extends Human { @override void doSomething() {sout("Woman");} }
+
+Human w = new Woman();
+Human m = new Man();
+```
+
+并执行 `w.doSomething()` 会执行 Woman的 doSomething() 方法，此处 `invokevirtual` doSomething:()V 是动态绑定
+// 此为 重写 的底层实现, 编译期无法确定
+
+比如 a.b()
+// invokevirtual 会找到 a 的实际类型
+// 在 a 中寻找方法 b()
+// 若没有，在 A 类的父类中寻找 b()
+
+8.3.2
+- 为了优化动态绑定
+- 类在连接阶段会在方法区中生成 `方法表`
+
+// 260 @_@
+
+
+11.1 
+JIT (Just In Time Compiler):
+- 当虚拟机发现某个方法或代码块的运行特别频繁时
+- 这些代码会被编译成平台相关的机器码
+- 并进行各种层次的优化
+
+11.2.1
+- HotSpot 采用解释器与编译器并存的架构 (此处的解释与编译是对 java bitcode 而言)	(mined mode)
+- 解释器: 省去编译时间，可以立即执行，需要迅速启动和执行时用。			(interpreted mode)
+- 编译器: 随着时间推移，把越来越多的代码编译成机器码，获取更高效率			(compiled mode)
+
+// todo: JIT
+
+12.3 JMM (Java Memory Model)
+- 主内存 & 工作内存
+- 所有的变量都保存在主内存 (局部变量在java栈中，属线程私有，不在讨论之列)
+- 每条线程有自己的工作内存，储存上述变量的拷贝，读写拷贝，不能直接读写主内存中的变量
+- 主内存: 	大致可以对应堆内存: 		一般为物理内存
+- 工作内存: 	大致可以对应虚拟机栈的某空间: 	一般为高速缓存/寄存器
+
+- JVM 需实现下列 8 种 主内存与工作内存间的操作，必须为原子操作:
+lock, unlock, read, load, use, assign, store, write
+
+12.3.3
+- volatile (并发可见性): 某个线程修改了一个变量的值，这个修改过后的值对别的线程立即可见(而不是等工作内存的临时值被写入之后再可见)
+- 使用 volatile 关键字时 (JIT)指令重排序优化 将被禁止
+- 具体: 假设有一个被 volatile 修饰的变量i 被赋值了
+- 在这条赋值语句的底层语言后(一般是汇编) 会插入一个
+- lock 与 add 空操作，向主内存即时更新该变量的值，这个操作一般被称为“内存屏障”，可以形成“重排序无法越过屏障”的效果
+- 而 volatile 修饰的变量在读取时会强制往主内存读取(几个读取指令需一起使用)，以此造成“更新后所有都可见”的效果
+
+- 内存模型: 原子性，可见性，有序性
+- 其它具有可见性的关键字: synchronized, final
+
+12.3.6 happens-before
+- 是判断数据是否存在竞争，线程是否安全的主要依据
+- 只有以下规则的顺序性是确定的
+1. Program Order Rule: 在同一个线程内，书写顺序排前的代码先执行
+2. Monitor Lock Rule: 当一个对象被 lock 时，对于它的 unlock 操作一定先于它的下一次 lock 操作
+3. Volatile Variable Rule: 对一个 volatile 的对象的写操作先于它的读操作
+4. Thread Start Rule: 某 Thread 对象的 start() 方法先于它的任何一个其它动作
+5. Thread Termination Rule: 线程中的所有操作都先于对此线程的终止检测。如: Thread.join()的结束，Thread.isAlive()的返回值
+6. Thread Interruption Rule: 线程中对 interrupt() (中断)的调用先于对此线程的中断检测(如: Thread.interrupted())
+7. Finalizer Rule: 一个对象的初始化完成先于它的 finalize()方法的开始
+8. Transitivity: 操作A 先于 操作B 发生，操作B 先于 操作C 发生，则操作A 先于 操作C 发生
+
+12.4.1
+- 线程的实现: 
+1. 内核实现(Kernel-Level Thread, KLT): 一般使用轻量级进程(Light Weight Process, LWP)
+2. 用户实现(User Thread, UT)
+3. 混合实现(N:M)
+- sun jdk 中的线程实现: Windows/Linux: LWP, Solaris: LWP/N:M
+
+12.4.2 线程调度
+- 分为: 协同式 / 抢占式
+
+12.4.3 线程状态
+1. 新建
+2. 运行
+3. 无限期等待 / 限期等待
+4. 阻塞
+5. 结束
+
+13.2.2
+- synchronized 与重入锁(ReentrantLock)
+- synchronized: 编译时生成 monitorenter 与 monitorexit + reference 获取或释放对象的锁，同一线程可重入
+
+- synchronized 是一个重操作: 需要在操作系统的`用户态/内核态`之间来回切换 
+- ReentrantLock 更灵活
+1. 等待可中断
+- 可应对别的线程长时间霸占锁的情况
+
+2. 可实现公平锁
+- 多个线程按照请求锁的先后依次请求锁 `new ReentrantLock(true)`
+
+3. 锁可以绑定多个条件
+- 多个Condition
+
+- synchronized 与 ReentrantLock 的性能在 JDK 6 中已经优化到基本持平
+
+13.2.2
+- 锁分 悲观锁 和 乐观锁
+- 悲观锁: 先加锁，再操作			// synchronized 与 ReentrantLock 都为悲观锁
+- 乐观锁: 先操作，(若不成功)再补偿操作	// 需要 CAS 支持 // 常见于 AtomicInteger
+- CAS: Compare-And-Swap 是现代处理器新增的指令，硬件支持
+- CAS 指令需 3 个参数(V-内存地址，A-旧值，B-新值) 如果已有旧值与 A 相同，则更新为 B
+- CAS 的 ABA 问题: 当 旧值为 A 时，无法得知 A 是否已被 A -> B -> A
+- 可加入一个版本值来防止 ABA 问题，不过一般 ABA 问题没有什么影响
+
+13.3.1 自旋锁与自适应自旋
+- 为了节省线程挂起与恢复的开销(用户态/内核态)
+- 某个线程想要获取一个对象的锁，若等待过程短暂，可以让该线程执行一个忙循环(自旋)来等待
+- 自适应自旋锁: 会参考上一次获得锁的自旋次数，设置自旋次数
+
+13.3.2 锁消除
+- 在 JIT 进行即时编译的时候
+- JVM 发现某一段代码要求同步，但被检测到不存在数据竞争的情况
+- 该锁会被消除
+- 判断依据，变量是否逃逸分析
+
+13.3.3 锁粗化
+- JVM 发现某个对象的锁被重复请求
+```
+for()
+{
+	synchronized ()
+	{
+		// todo
+	}
+}
+```
+- JVM 会扩大加锁同步的范围，称之为锁粗化
+
+13.3.4 轻量级锁
+- 回顾一下 2.3.2 中 HotSpot 的对象头
+`对象头(Mark Word): HashCode, GC代年龄，锁状态，线程持有的锁，偏向线程ID，偏向时间戳。还有指向类元数据的指针。(若是数组)还有数组长度, 大小: 一个 word(32/64bit)`
+
+- 当我们要获取这个对象的锁
+1. 如果之前还没有线程获取这个对象的锁
+2. 在当前JVM栈的栈帧中建立 Lock Record 空间，将 Mark Word 拷贝到其中
+3. 使用 CAS 操作将对象的 Mark Word 更新为指向 Lock Record 的指针，并将其锁标志位(最后 2 bit)置为‘轻量级锁定’
+
+4. 如果更新失败，而且 Mark Word 指向别的栈帧的 Lock Record ，说明锁被别的线程抢占
+5. 当有线程竞争一个轻量级锁，该轻量级锁会 ‘膨胀’ 为重量级锁
+
+注: CAS 操作的开销是其优化的成本
+
+13.3.5 偏向锁
+- 只是用 CAS 更改了 Mark Word 与锁状态(偏向锁)
+- 若有线程竞争该锁，偏向模式结束，视情况改为未锁定/轻量级锁定
+
+注: CAS 操作的开销是其优化的成本
+

@@ -7,7 +7,7 @@
 
 package oops.chapter20.section2;
 
-import oops.App;
+import oops.CheckGC;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -28,7 +28,7 @@ public class ORMHandler
     {
         try
         {
-            Class<?> clazz = App.class;
+            Class<?> clazz = CheckGC.class;
             ORM.DBTable dbTable = clazz.getAnnotation(ORM.DBTable.class);
             if (dbTable != null)
             {
