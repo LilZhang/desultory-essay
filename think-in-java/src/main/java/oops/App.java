@@ -7,6 +7,10 @@
 
 package oops;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.channels.SocketChannel;
+
 /**
  * Description:
  * <p>
@@ -17,76 +21,18 @@ package oops;
  */
 public class App
 {
-    private static final String PATH = "/home/lilzhang/Desktop/map.txt";
-
     public static void main(String[] args)
     {
-        char c = 1;
-        hello(c);
-    }
+        try
+        {
+            SocketChannel socketChannel = SocketChannel.open();
+            socketChannel.connect(new InetSocketAddress("127.0.0.1", 23333));
 
-    private static void hello(byte b)
-    {
-        System.out.println("hello byte");
-    }
 
-    private static void hello(short s)
-    {
-        System.out.println("hello short");
-    }
-
-//    private static void hello(char c)
-//    {
-//        System.out.println("hello char");
-//    }
-
-    private static void hello(int i)
-    {
-        System.out.println("hello int");
-    }
-
-    private static void hello(long l)
-    {
-        System.out.println("hello long");
-    }
-
-    private static void hello(float f)
-    {
-        System.out.println("hello float");
-    }
-
-    private static void hello(double d)
-    {
-        System.out.println("hello double");
-    }
-
-    private static void hello(Byte b)
-    {
-        System.out.println("hello java.lang.Byte");
-    }
-
-    private static void hello(Number n)
-    {
-        System.out.println("hello java.lang.Number");
-    }
-
-    private static void hello(Object o)
-    {
-        System.out.println("hello Object");
-    }
-
-    private static void hello(byte... b)
-    {
-        System.out.println("hello byte...");
-    }
-
-    private static void hello(Byte... b)
-    {
-        System.out.println("hello Byte...");
-    }
-
-    private static void hello(Object... o)
-    {
-        System.out.println("hello Object...");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

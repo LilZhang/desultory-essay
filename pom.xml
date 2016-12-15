@@ -11,6 +11,7 @@
     <module>collections</module>
     <module>inside-the-java-virtual-machine</module>
     <module>serlvet-jsp-a-tutorial</module>
+    <module>begin-spring</module>
   </modules>
   <packaging>pom</packaging>
 
