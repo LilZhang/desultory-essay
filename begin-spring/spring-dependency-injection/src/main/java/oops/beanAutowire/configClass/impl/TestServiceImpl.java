@@ -5,7 +5,7 @@
  *
  */
 
-package oops.configClass.impl;
+package oops.beanAutowire.configClass.impl;
 
 import oops.TestDao;
 import oops.TestModel;
@@ -21,15 +21,15 @@ import oops.TestService;
  */
 public class TestServiceImpl implements TestService
 {
-    private TestDao testDao;
+    private TestDao testDaoAutoWiredByName;
 
-    public void setTestDao(TestDao testDao)
+    public void setTestDaoAutoWiredByName(TestDao testDaoAutoWiredByName)
     {
-        this.testDao = testDao;
+        this.testDaoAutoWiredByName = testDaoAutoWiredByName;
     }
 
     public TestModel handle(TestModel model)
     {
-        return this.testDao.gen(model);
+        return this.testDaoAutoWiredByName.gen(model);
     }
 }

@@ -25,9 +25,21 @@ public class ConfigXMLMain
     {
         ClassPathXmlApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("/configInXML/applicationContext.xml");
+
         TestService testService = applicationContext.getBean("testService", TestService.class);
         TestModel model = testService.handle(new TestModel(1));
-
         System.out.println(model);
+
+        TestModel myTestModel = applicationContext.getBean("myTestModel", TestModel.class);
+        System.out.println(myTestModel);
+
+        TestModel constractorTestModel = applicationContext.getBean("constractorTestModel", TestModel.class);
+        System.out.println(constractorTestModel);
+
+        TestModel constractorTestModel2 = applicationContext.getBean("constractorTestModel2", TestModel.class);
+        System.out.println(constractorTestModel2);
+
+        TestModel factoryTestModel = applicationContext.getBean("factoryTestModel", TestModel.class);
+        System.out.println(factoryTestModel);
     }
 }

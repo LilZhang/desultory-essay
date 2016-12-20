@@ -10,6 +10,7 @@ package oops.annotate.impl;
 import oops.TestDao;
 import oops.TestModel;
 import oops.TestService;
+import oops.annotate.InjectComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +28,22 @@ public class TestServiceImpl implements TestService
     @Autowired
     private TestDao testDao;
 
-    public TestDao getTestDao()
-    {
-        return testDao;
-    }
+    @Autowired
+    private InjectComponent injectComponent;
 
     public void setTestDao(TestDao testDao)
     {
         this.testDao = testDao;
     }
 
+    public void setInjectComponent(InjectComponent injectComponent)
+    {
+        this.injectComponent = injectComponent;
+    }
+
     public TestModel handle(TestModel model)
     {
+        injectComponent.doComp();
         return this.testDao.gen(model);
     }
 }

@@ -7,6 +7,9 @@
 
 package oops;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Description:
  * <p>
@@ -28,6 +31,18 @@ public class TestModel
     public TestModel(int id)
     {
         this.id = id;
+    }
+
+    public TestModel(int id, String content)
+    {
+        this.id = id;
+        this.content = content;
+    }
+
+    public TestModel(TestModel model)
+    {
+        this.id = model.getId();
+        this.content = model.getContent();
     }
 
     public int getId()
@@ -58,5 +73,27 @@ public class TestModel
         sb.append(", content='").append(content).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public void xmlInit()
+    {
+        System.out.println("该 bean 由 xml 方式初始化");
+    }
+
+    public void xmlDestory()
+    {
+        System.out.println("该 bean 由 xml 方式销毁");
+    }
+
+    @PostConstruct
+    public void init()
+    {
+        System.out.println("该 bean 由 注解 方式初始化");
+    }
+
+    @PreDestroy
+    public void destory()
+    {
+        System.out.println("该 bean 由 注解 方式销毁");
     }
 }

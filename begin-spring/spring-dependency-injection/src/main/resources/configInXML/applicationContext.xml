@@ -4,9 +4,32 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 利用 field 进行注入 -->
     <bean id="testService" class="oops.configInXML.impl.TestServiceImpl">
         <property name="testDao" ref="testDao"/>
     </bean>
 
     <bean id="testDao" class="oops.configInXML.impl.TestDaoImpl"></bean>
+
+    <!-- 利用 field 进行注入 -->
+    <bean id="myTestModel" class="oops.TestModel" init-method="xmlInit" destroy-method="xmlDestory">
+        <property name="id" value="666"/>
+        <property name="content" value="在XML文件中定义的bean"/>
+    </bean>
+
+    <!-- 利用 构造器 进行注入 -->
+    <bean id="constractorTestModel" class="oops.TestModel">
+        <constructor-arg name="id" value="555"/>
+        <constructor-arg name="content" value="利用 constructor 定义 bean"/>
+    </bean>
+
+    <!-- 利用 构造器和field 进行注入 -->
+    <bean id="constractorTestModel2" class="oops.TestModel">
+        <constructor-arg name="model" ref="constractorTestModel"/>
+        <property name="id" value="32768"/>
+    </bean>
+
+    <!-- 由工厂类生成 bean  -->
+    <bean id="testModelFactory" class="oops.configInXML.TestModelFactory"/>
+    <bean id="factoryTestModel" factory-bean="testModelFactory" factory-method="genModel"/>
 </beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <bean id="aopXML" class="oops.configInXML.AopXML"/>
+
+    <context:component-scan base-package="oops.beanToAop"/>
+    <aop:config>
+
+        <!-- 给方法中的 MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice 使用 -->
+        <aop:pointcut id="aopXMLPointCut" expression="execution(public * *(..))"/>
+        <aop:advisor id="executionTimeAdvisor"
+                     advice-ref="aopXML"
+                     pointcut-ref="aopXMLPointCut"/>
+        <!-- 给方法中的 MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice 使用 end -->
+
+        <!-- 给方法中的 after(aspectj) 使用 -->
+        <aop:aspect ref="aopXML">
+            <aop:pointcut id="afterAopPointCut" expression="execution(public * *(..))"/>
+            <aop:after pointcut-ref="afterAopPointCut" method="methodForAfter"/>
+        </aop:aspect>
+        <!-- 给方法中的 after(aspectj) 使用 end -->
+
+    </aop:config>
+</beans>

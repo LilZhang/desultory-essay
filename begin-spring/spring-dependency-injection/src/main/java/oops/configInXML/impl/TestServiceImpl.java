@@ -23,11 +23,6 @@ public class TestServiceImpl implements TestService
 {
     private TestDao testDao;
 
-    public TestDao getTestDao()
-    {
-        return testDao;
-    }
-
     public void setTestDao(TestDao testDao)
     {
         this.testDao = testDao;

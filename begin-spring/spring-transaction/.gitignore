@@ -1,0 +1,6 @@
+ -am ''/.settings
+/target
+/test-output
+/.classpath
+/.project
+begin-spring.iml

@@ -5,7 +5,7 @@
  *
  */
 
-package oops.annotate;
+package oops.beanAutowire.configInXML;
 
 import oops.TestModel;
 import oops.TestService;
@@ -15,22 +15,20 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Description:
  * <p>
  * Create Author  : lilzhang
- * Create Date    : 2016-12-15
+ * Create Date    : 2016-12-16
  * Project        : desultory-essay
- * File Name      : AnnoMain.java
+ * File Name      : Main.java
  */
-public class AnnoMain
+public class Main
 {
     public static void main(String[] args)
     {
         ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("/annotate/applicationContext.xml");
+                new ClassPathXmlApplicationContext("/autowire/applicationContext.xml");
 
         TestService testService = applicationContext.getBean("testService", TestService.class);
         TestModel model = testService.handle(new TestModel(1));
-        System.out.println(model);
 
-        TestModel factoryTestModel = applicationContext.getBean("factoryTestModel", TestModel.class);
-        System.out.println(factoryTestModel);
+        System.out.println(model);
     }
 }

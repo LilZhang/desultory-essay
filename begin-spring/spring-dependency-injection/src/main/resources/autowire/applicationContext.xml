@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="testService" class="oops.beanAutowire.configInXML.impl.TestServiceImpl" autowire="byType"/>
+
+    <!-- testService 中的 TestDao 属性由下面的 bean 来填充(因为设置了autowire="byType") -->
+    <bean id="beanForTestDao" class="oops.beanAutowire.configInXML.impl.TestDaoImpl"/>
+</beans>

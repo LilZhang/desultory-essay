@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <bean id="aopXML" class="oops.configInXML.AopXML"/>
+
+    <context:component-scan base-package="oops.beanToAop"/>
+    <aop:config>
+
+        <!-- expression 详解 定位方法的表达式: 即指定哪些方法需要 AOP -->
+            <!-- within -->
+                <!-- within(oops.util.MyClass) 匹配该类中所有方法 -->
+                <!-- within(oops.util..*) 匹配该包下类中所有方法 -->
+                <!-- within(oops.interf.MyInterface+) 匹配所有实现了 MyInterface 的所有方法 -->
+                <!-- within(oops.base.BaseClass+) 匹配所有 BaseClass 类及其子类的所有方法 -->
+            <!-- execution -->
+                <!-- execution(* oops.util.MyClass.*(..)) 匹配 MyClass 中的所有方法，不管公共与私有 -->
+                <!-- execution(public * oops.util.MyClass.*(..)) 匹配 MyClass 中的所有公共方法 -->
+                <!-- execution(* String *(..)) 匹配所有返回字符串的方法 -->
+                <!-- execution(public * oops.util.MyClass.*(long,..)) 匹配 MyClass 中的所有 第一个行参为 long 的公共方法 -->
+
+        <!-- bean -->
+                <!-- bean(*Service) 名字后缀为Service的 bean -->
+            <!-- @annotation -->
+                <!-- @annotation(oops.util.MyAnnotation) 被 MyAnnotation 标注的方法 -->
+            <!-- @within -->
+                <!-- ? -->
+            <!-- This -->
+                <!-- This(oops.interf.MyInterface) 任何实现了 MyInterface 接口的代理对象 -->
+        <!-- expression 详解 end -->
+
+        <!-- 给方法中的 MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice 使用 -->
+        <aop:pointcut id="aopXMLPointCut" expression="execution(public * *(..))"/>
+        <aop:advisor id="executionTimeAdvisor"
+                     advice-ref="aopXML"
+                     pointcut-ref="aopXMLPointCut"/>
+        <!-- 给方法中的 MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice 使用 end -->
+
+        <!-- 给方法中的 after 与 around (aspectj) 使用 -->
+        <aop:aspect ref="aopXML">
+            <aop:pointcut id="afterAopPointCut" expression="execution(public * *(..))"/>
+            <aop:after pointcut-ref="afterAopPointCut" method="methodForAfter"/>
+            <aop:around pointcut-ref="afterAopPointCut" method="statExeTimeUsingAround"/>
+        </aop:aspect>
+        <!-- 给方法中的 after 与 around (aspectj) 使用 end -->
+
+    </aop:config>
+</beans>
