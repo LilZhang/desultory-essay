@@ -7,8 +7,17 @@
 
 package oops;
 
-import java.util.HashSet;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.BitSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.zip.Deflater;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.Inflater;
+import java.util.zip.InflaterOutputStream;
 
 /**
  * Description:
@@ -20,45 +29,124 @@ import java.util.Set;
  */
 public class App2
 {
-    private static Set<Integer> set = new HashSet<Integer>();
-
-    static
-    {
-        set.add(15);
-        set.add(22);
-        set.add(40);
-        set.add(12);
-        set.add(32);
-        set.add(1);
-        set.add(27);
-        set.add(11);
-        set.add(3);
-        set.add(20);
-        set.add(8);
-        set.add(23);
-        set.add(24);
-        set.add(29);
-        set.add(26);
-        set.add(5);
-        set.add(33);
-        set.add(41);
-        set.add(17);
-        set.add(6);
-        set.add(36);
-    }
+    private static byte[] bytes = new byte[0];
 
     public static void main(String[] args)
     {
-        System.out.println(getNum());
+        Set<Integer> set = IntStream
+                .rangeClosed(0, 100)
+                .boxed()
+                .collect(Collectors.toSet());
+
+        System.out.println("100 start.");
+        long start = System.currentTimeMillis();
+
+        set.forEach((i) ->
+        {
+            BitSet bitSet = inflater(bytes);
+            bitSet.set(i);
+            bytes = deflater(bitSet);
+        });
+
+        long end = System.currentTimeMillis();
+        System.out.println("100 put: " + (end - start));
     }
 
-    private static int getNum()
+
+    // 解压缩
+    public static BitSet inflater(byte[] bytes)
     {
-        int x = ((int) (Math.random() * 43)) + 1;
-        if (set.contains(x))
+        ByteArrayOutputStream baos = null;
+        InflaterOutputStream ios = null;
+        BitSet result = null;
+
+        try
         {
-            return getNum();
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            baos = new ByteArrayOutputStream();
+            ios = new InflaterOutputStream(baos, new Inflater(true));
+
+            byte[] b = new byte[1024];
+            int len;
+            while ((len = bais.read(b)) != -1)
+            {
+                ios.write(b, 0, len);
+            }
         }
-        return x;
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            // bais.close();
+            if (ios != null)
+            {
+                try
+                {
+                    ios.close();
+                }
+                catch (IOException e)
+                {
+                    // ignore
+                }
+            }
+        }
+
+        if (baos != null)
+        {
+            result = BitSet.valueOf(baos.toByteArray());
+        }
+        return result;
+    }
+
+    // 压缩
+    public static byte[] deflater(BitSet bitSet)
+    {
+        byte[] bytes = bitSet.toByteArray();
+        ByteArrayOutputStream baos = null;
+        DeflaterOutputStream dos = null;
+        byte[] result = null;
+
+        try
+        {
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            baos = new ByteArrayOutputStream();
+            dos = new DeflaterOutputStream(baos, new Deflater(1, true));   // COMPRESSION LEVEL 1
+
+            byte[] b = new byte[1024];
+            int len;
+            while ((len = bais.read(b)) != -1)
+            {
+                dos.write(b, 0, len);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            // bais.close();
+            // baos.close();
+            if (dos != null)
+            {
+                try
+                {
+                    dos.flush();
+                    dos.close();
+                }
+                catch (IOException e)
+                {
+                    // ignore
+                }
+            }
+        }
+
+        if (baos != null)
+        {
+            result = baos.toByteArray();
+        }
+        return result;
     }
 }

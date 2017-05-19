@@ -14,6 +14,8 @@ import oops.annotate.InjectComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Description:
  * <p>
@@ -31,6 +33,14 @@ public class TestServiceImpl implements TestService
     @Autowired
     private InjectComponent injectComponent;
 
+    private Object initObject;
+
+    @PostConstruct
+    public void init()
+    {
+        initObject = new Integer(44);
+    }
+
     public void setTestDao(TestDao testDao)
     {
         this.testDao = testDao;
@@ -44,6 +54,12 @@ public class TestServiceImpl implements TestService
     public TestModel handle(TestModel model)
     {
         injectComponent.doComp();
+        System.out.println(getInitObject());
         return this.testDao.gen(model);
+    }
+
+    public Object getInitObject()
+    {
+        return initObject;
     }
 }

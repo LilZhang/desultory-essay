@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="serlvet-jsp-a-tutorial:war">
+    <output-path>$PROJECT_DIR$/serlvet-jsp-a-tutorial/target</output-path>
+    <root id="archive" name="serlvet-jsp-a-tutorial-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="serlvet-jsp-a-tutorial:war exploded" />
+    </root>
+  </artifact>
+</component>

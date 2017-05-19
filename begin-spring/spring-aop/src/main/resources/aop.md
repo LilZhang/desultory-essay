@@ -22,9 +22,10 @@
 ## spring aop 常用 JoinPoint (接合点)
 
 - Before
+- (method execution)
+- after
 - afterReturning
 - afterThrowing
-- after
 - around
 
 

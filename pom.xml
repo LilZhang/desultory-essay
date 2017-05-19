@@ -12,6 +12,11 @@
     <module>inside-the-java-virtual-machine</module>
     <module>serlvet-jsp-a-tutorial</module>
     <module>begin-spring</module>
+    <module>java-communication</module>
+    <module>web-service-invoker</module>
+    <module>functional-programming</module>
+      <module>redis-compress</module>
+      <module>redis-devops</module>
   </modules>
   <packaging>pom</packaging>
 

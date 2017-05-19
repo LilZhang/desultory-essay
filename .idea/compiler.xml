@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="collections" />
+        <module name="functional-programming" />
+        <module name="inside-the-java-virtual-machine" />
+        <module name="java-communication" />
+        <module name="learning-sql" />
+        <module name="redis-compress" />
+        <module name="redis-devops" />
+        <module name="serlvet-jsp-a-tutorial" />
+        <module name="spring-aop" />
+        <module name="spring-jdbc" />
+        <module name="spring-mvc" />
+        <module name="spring-transaction" />
+        <module name="think-in-java" />
+        <module name="web-service-invoker" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="begin-spring" target="1.5" />
+      <module name="collections" target="1.5" />
+      <module name="desultory-essay" target="1.5" />
+      <module name="functional-programming" target="1.5" />
+      <module name="inside-the-java-virtual-machine" target="1.5" />
+      <module name="java-communication" target="1.5" />
+      <module name="learning-sql" target="1.5" />
+      <module name="redis-compress" target="1.5" />
+      <module name="redis-devops" target="1.5" />
+      <module name="serlvet-jsp-a-tutorial" target="1.5" />
+      <module name="spring-aop" target="1.5" />
+      <module name="spring-dependency-injection" target="1.5" />
+      <module name="spring-jdbc" target="1.5" />
+      <module name="spring-mvc" target="1.5" />
+      <module name="spring-transaction" target="1.5" />
+      <module name="think-in-java" target="1.5" />
+      <module name="web-service-invoker" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -4,3 +4,4 @@
 /.classpath
 /.project
 *.iml
+/begin-spring/spring-transaction/src/main/resources/config/db.properties

@@ -7,6 +7,8 @@
 
 package oops;
 
+import java.text.DecimalFormat;
+
 /**
  * Description:
  * <p/>
@@ -19,18 +21,9 @@ public class ByteTest
 {
     public static void main(String[] args)
     {
-        byte b = 5;
-        System.out.println(Integer.toBinaryString(b));          //  0111
-        System.out.println(Integer.toBinaryString(reverse(b))); //  1110
-    }
+        DecimalFormat df = new DecimalFormat("#.00");
+        String format = df.format(3.5D);
+        System.out.println(format);
 
-    private static int reverse(int x)
-    {
-        int result = 0;
-        for(byte i = 0; i < 4; i++)
-        {
-            result = (result << 1) + (1 & (x >> i));
-        }
-        return result;
     }
 }

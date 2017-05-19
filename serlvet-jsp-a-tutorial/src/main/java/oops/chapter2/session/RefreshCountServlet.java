@@ -33,6 +33,8 @@ public class RefreshCountServlet extends HttpServlet
         HttpSession session = req.getSession();
         MySessionObj refresh = (MySessionObj) session.getAttribute("refresh");
 
+        System.out.println("test session id: " + session.getId());
+
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter writer = resp.getWriter();

@@ -8,8 +8,11 @@
 package oops.configAnno;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 /**
  * Description:
@@ -26,31 +29,61 @@ public class AopAnno
     @Before("execution(public * *(..))")
     public void methodForBefore(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - before(aspectj)] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @AfterReturning("execution(public * *(..))")
     public void methodForAfterReturnning(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - afterReturning(aspectj)] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @AfterThrowing(value = "execution(public * *(..))", throwing = "t")
     public void methodForAfterThrowing(JoinPoint jp, Throwable t)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - afterThrowing(aspectj)] method: %s, args: %s, target: %s, throw: %s\n",
+                methodName, args, className, t.getMessage());
     }
 
     @After("execution(public * *(..))")
     public void methodForAfter(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - after(aspectj)] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @Around("execution(public * *(..))")
-    public void methodForAround(JoinPoint jp) throws Throwable
+    public void methodForAround(ProceedingJoinPoint jp) throws Throwable
     {
+        long start = System.currentTimeMillis();
 
+        String targetName = jp.getTarget().getClass().getCanonicalName();
+        String methodName = jp.getSignature().getName();
+        String args = Arrays.toString(jp.getArgs());
+
+        jp.proceed();
+
+        long duration = System.currentTimeMillis() - start;
+        System.out.format("[AopAnno - around(aspectj)] method: %s, args: %s, target: %s, duration: %d\n",
+                methodName, args, targetName, duration);
     }
 
 
@@ -78,30 +111,60 @@ public class AopAnno
     @Before("anyMethodWithOneAnno()")
     public void methodForBefore2(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - before(aspectj) - 2] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @AfterReturning("anyMethodWithAnotherAnno()")
     public void methodForAfterReturnning2(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - afterReturning(aspectj) - 2] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @AfterThrowing(value = "anyMethodWithOneAnno() && anyMethodWithAnotherAnno()", throwing = "t")
     public void methodForAfterThrowing2(JoinPoint jp, Throwable t)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - afterThrowing(aspectj) - 2] method: %s, args: %s, target: %s, throw: %s\n",
+                methodName, args, className, t.getMessage());
     }
 
     @After("anyMethodWithOneAnno()")
     public void methodForAfter2(JoinPoint jp)
     {
+        String methodName = jp.getSignature().getName();
+        String className = jp.getTarget().getClass().getName();
+        String args = Arrays.toString(jp.getArgs());
 
+        System.out.format("[AopAnno - after(aspectj) - 2] method: %s, args: %s, target: %s\n",
+                methodName, args, className);
     }
 
     @Around("anyMethodWithOneAnno() || anyMethodWithAnotherAnno()")
-    public void methodForAround2(JoinPoint jp) throws Throwable
+    public void methodForAround2(ProceedingJoinPoint jp) throws Throwable
     {
+        long start = System.currentTimeMillis();
 
+        String targetName = jp.getTarget().getClass().getCanonicalName();
+        String methodName = jp.getSignature().getName();
+        String args = Arrays.toString(jp.getArgs());
+
+        jp.proceed();
+
+        long duration = System.currentTimeMillis() - start;
+        System.out.format("[AopAnno - around(aspectj) - 2] method: %s, args: %s, target: %s, duration: %d\n",
+                methodName, args, targetName, duration);
     }
 }

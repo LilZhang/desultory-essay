@@ -41,7 +41,7 @@
         <aop:pointcut id="aopXMLPointCut" expression="execution(public * *(..))"/>
         <aop:advisor id="executionTimeAdvisor"
                      advice-ref="aopXML"
-                     pointcut-ref="aopXMLPointCut"/>
+                     pointcut-ref="aopXMLPointCut" order="1"/>
         <!-- 给方法中的 MethodBeforeAdvice, AfterReturningAdvice, ThrowsAdvice 使用 end -->
 
         <!-- 给方法中的 after 与 around (aspectj) 使用 -->
