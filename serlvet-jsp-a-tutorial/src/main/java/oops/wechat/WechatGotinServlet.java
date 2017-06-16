@@ -1,4 +1,7 @@
+<<<<<<< 41b6f739233c6b9f970a79f9ed1db68b869eaec6
 /*
+=======
+>>>>>>> 201706161956
 package oops.wechat;
 
 import javax.servlet.ServletException;
@@ -14,8 +17,12 @@ import java.util.Arrays;
 @WebServlet(urlPatterns = "/wechat_gotin")
 public class WechatGotinServlet extends HttpServlet
 {
+<<<<<<< 41b6f739233c6b9f970a79f9ed1db68b869eaec6
     */
 /*@Override
+=======
+    /*@Override
+>>>>>>> 201706161956
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
         Map<String, String> infoMap = Utils.getReqInfoMap(req);
@@ -39,8 +46,12 @@ public class WechatGotinServlet extends HttpServlet
         }
         writer.print("</table></body></html>");
 
+<<<<<<< 41b6f739233c6b9f970a79f9ed1db68b869eaec6
     }*//*
 
+=======
+    }*/
+>>>>>>> 201706161956
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -164,4 +175,8 @@ public class WechatGotinServlet extends HttpServlet
     {
         return null != str  ? str.trim() : str;
     }
+<<<<<<< 41b6f739233c6b9f970a79f9ed1db68b869eaec6
 }*/
+=======
+}
+>>>>>>> 201706161956
