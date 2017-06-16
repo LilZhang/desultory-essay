@@ -17,6 +17,8 @@
     <module>functional-programming</module>
       <module>redis-compress</module>
       <module>redis-devops</module>
+      <module>netty-in-action</module>
+    <module>runnable-jar</module>
   </modules>
   <packaging>pom</packaging>
 

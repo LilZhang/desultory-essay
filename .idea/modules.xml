@@ -9,8 +9,10 @@
       <module fileurl="file://$PROJECT_DIR$/inside-the-java-virtual-machine/inside-the-java-virtual-machine.iml" filepath="$PROJECT_DIR$/inside-the-java-virtual-machine/inside-the-java-virtual-machine.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-communication/java-communication.iml" filepath="$PROJECT_DIR$/java-communication/java-communication.iml" />
       <module fileurl="file://$PROJECT_DIR$/learning-sql/learning-sql.iml" filepath="$PROJECT_DIR$/learning-sql/learning-sql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-in-action/netty-in-action.iml" filepath="$PROJECT_DIR$/netty-in-action/netty-in-action.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-compress/redis-compress.iml" filepath="$PROJECT_DIR$/redis-compress/redis-compress.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-devops/redis-devops.iml" filepath="$PROJECT_DIR$/redis-devops/redis-devops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/runnable-jar/runnable-jar.iml" filepath="$PROJECT_DIR$/runnable-jar/runnable-jar.iml" />
       <module fileurl="file://$PROJECT_DIR$/serlvet-jsp-a-tutorial/serlvet-jsp-a-tutorial.iml" filepath="$PROJECT_DIR$/serlvet-jsp-a-tutorial/serlvet-jsp-a-tutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/begin-spring/spring-aop/spring-aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-dependency-injection/spring-dependency-injection.iml" filepath="$PROJECT_DIR$/begin-spring/spring-dependency-injection/spring-dependency-injection.iml" />

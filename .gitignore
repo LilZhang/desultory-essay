@@ -3,5 +3,6 @@
 /test-output
 /.classpath
 /.project
+/.idea
 *.iml
 /begin-spring/spring-transaction/src/main/resources/config/db.properties
