@@ -1,4 +1,4 @@
-package oops.async.aio.tcp;
+package oops.async.aio.tcp.simple;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -48,7 +48,8 @@ public class TcpAioServer
 
                     server.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>()
                     {
-                        final ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
+//                        final ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
+                        final ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
                         @Override
                         public void completed(AsynchronousSocketChannel result, Object attachment)
@@ -97,8 +98,8 @@ public class TcpAioServer
 
                     try
                     {
-                        // keep running
-                        latch.await();
+                        // Wait for ever
+                        Thread.sleep(Integer.MAX_VALUE);
                     }
                     catch (InterruptedException e)
                     {
@@ -121,6 +122,7 @@ public class TcpAioServer
 
     public static void main(String[] args)
     {
-
+        TcpAioServer server = new TcpAioServer(8585);
+        server.startup();
     }
 }

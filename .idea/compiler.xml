@@ -40,9 +40,9 @@
       <module name="desultory-essay" target="1.5" />
       <module name="functional-programming" target="1.5" />
       <module name="inside-the-java-virtual-machine" target="1.5" />
-      <module name="java-communication" target="1.8" />
+      <module name="java-communication" target="1.5" />
       <module name="learning-sql" target="1.5" />
-      <module name="netty-in-action" target="1.5" />
+      <module name="netty-in-action" target="1.8" />
       <module name="redis-compress" target="1.5" />
       <module name="redis-devops" target="1.5" />
       <module name="runnable-jar" target="1.5" />

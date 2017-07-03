@@ -7,8 +7,6 @@
 
 package oops.configClass;
 
-import oops.TestModel;
-import oops.TestService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -25,9 +23,9 @@ public class ConfigClassMain
     {
         AnnotationConfigApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(ConfigClass.class);
-        TestService testService = applicationContext.getBean("testService", TestService.class);
-        TestModel model = testService.handle(new TestModel(1));
+//        TestService testService = applicationContext.getBean("testService", TestService.class);
+//        TestModel model = testService.handle(new TestModel(1));
 
-        System.out.println(model);
+//        System.out.println(model);
     }
 }

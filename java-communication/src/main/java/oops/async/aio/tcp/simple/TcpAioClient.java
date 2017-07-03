@@ -1,4 +1,4 @@
-package oops.async.aio.tcp;
+package oops.async.aio.tcp.simple;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -25,11 +25,7 @@ public class TcpAioClient
                         client.write(ByteBuffer.wrap(content.getBytes())).get();
                         System.out.println("data sent!");
                     }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    catch (ExecutionException e)
+                    catch (InterruptedException | ExecutionException e)
                     {
                         e.printStackTrace();
                     }
@@ -59,6 +55,16 @@ public class TcpAioClient
                     exc.printStackTrace();
                 }
             });
+
+            try
+            {
+                // Wait for ever
+                Thread.sleep(Integer.MAX_VALUE);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
         }
         catch (IOException e)
         {
@@ -68,6 +74,7 @@ public class TcpAioClient
 
     public static void main(String[] args)
     {
-        new TcpAioClient().start("test_content_for_aio", new InetSocketAddress("127.0.0.1", ));
+        TcpAioClient tcpAioClient = new TcpAioClient();
+        tcpAioClient.start("test_content_for_aio", new InetSocketAddress("127.0.0.1", 8585));
     }
 }
