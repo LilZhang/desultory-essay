@@ -107,7 +107,6 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 
         sendFileFuture.addListener(new ChannelProgressiveFutureListener()
         {
-            @Override
             public void operationProgressed(ChannelProgressiveFuture future, long progress, long total) throws Exception
             {
                 if (total < 0)
@@ -120,7 +119,6 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
                 }
             }
 
-            @Override
             public void operationComplete(ChannelProgressiveFuture future) throws Exception
             {
                 System.out.printf("Transfer complete.\n");
@@ -190,7 +188,7 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
             return null;
         }
 
-        return System.getProperty("user.dir") + File.separator + uri;
+        return System.getProperty("user.dir") + /*File.separator +*/ uri;
     }
 
     private void sendListing(ChannelHandlerContext ctx, File dir)
