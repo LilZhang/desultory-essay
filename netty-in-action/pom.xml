@@ -52,13 +52,22 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>oops.deprecated.chapter2.EchoClient</mainClass>
+                            <mainClass>oops.content.customProtocol.NettyMain</mainClass>
                         </manifest>
                     </archive>
                     <finalName>${artifactId}-${version}</finalName>

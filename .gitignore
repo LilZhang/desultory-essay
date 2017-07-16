@@ -6,3 +6,5 @@
 /.idea
 *.iml
 /begin-spring/spring-transaction/src/main/resources/config/db.properties
+/netty-in-action/target/
+/netty-in-action/netty-in-action.iml
