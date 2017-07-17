@@ -4,6 +4,7 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -24,15 +25,16 @@ public class UDPSender
             bootstrap.group(group)
                     .channel(NioDatagramChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 100)
-                    .handler(new UDPSenderHandler())
+//                    .handler(new UDPSenderHandler())
+                    .handler(new ChannelInboundHandlerAdapter())
             ;
 
             Channel channel = bootstrap.bind(0).sync().channel();
             ByteBuf buf = Unpooled.copiedBuffer("test String", CharsetUtil.UTF_8);
             DatagramPacket packet = new DatagramPacket(buf, new InetSocketAddress(host, port));
             channel.writeAndFlush(packet);
-//            channel.writeAndFlush(packet).sync();
 
+//            channel.writeAndFlush(packet).sync();
 //            if (!channel.closeFuture().await(15000))
 //            {
 //                System.out.println("超时!");

@@ -12,6 +12,7 @@ public class UDPReceiverHandler extends SimpleChannelInboundHandler<DatagramPack
         String req = packet.content().toString(CharsetUtil.UTF_8);
         System.out.println("receiver: " + req);
 
+//
 //        ByteBuf buf = Unpooled.copiedBuffer("[echo]" + req, CharsetUtil.UTF_8);
 //        ctx.writeAndFlush(new DatagramPacket(buf, packet.sender()));
     }
