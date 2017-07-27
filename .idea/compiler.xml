@@ -20,6 +20,7 @@
         <module name="functional-programming" />
         <module name="inside-the-java-virtual-machine" />
         <module name="java-communication" />
+        <module name="java-concurrency-in-practice" />
         <module name="learning-sql" />
         <module name="netty-in-action" />
         <module name="redis-compress" />
@@ -34,13 +35,14 @@
         <module name="web-service-invoker" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="begin-spring" target="1.5" />
       <module name="collections" target="1.5" />
       <module name="desultory-essay" target="1.5" />
       <module name="functional-programming" target="1.5" />
       <module name="inside-the-java-virtual-machine" target="1.5" />
       <module name="java-communication" target="1.5" />
+      <module name="java-concurrency-in-practice" target="1.8" />
       <module name="learning-sql" target="1.5" />
       <module name="netty-in-action" target="1.8" />
       <module name="redis-compress" target="1.5" />
@@ -52,7 +54,7 @@
       <module name="spring-jdbc" target="1.5" />
       <module name="spring-mvc" target="1.5" />
       <module name="spring-transaction" target="1.5" />
-      <module name="think-in-java" target="1.5" />
+      <module name="think-in-java" target="1.8" />
       <module name="web-service-invoker" target="1.5" />
     </bytecodeTargetLevel>
   </component>
