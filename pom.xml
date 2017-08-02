@@ -15,11 +15,13 @@
     <module>java-communication</module>
     <module>web-service-invoker</module>
     <module>functional-programming</module>
-      <module>redis-compress</module>
-      <module>redis-devops</module>
-      <module>netty-in-action</module>
+    <module>redis-compress</module>
+    <module>redis-devops</module>
+    <module>netty-in-action</module>
     <module>runnable-jar</module>
     <module>java-concurrency-in-practice</module>
+    <module>spring-sourcecode</module>
+	<module>begin-storm</module>
   </modules>
   <packaging>pom</packaging>
 

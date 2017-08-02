@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/begin-spring/begin-spring.iml" filepath="$PROJECT_DIR$/begin-spring/begin-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/begin-storm/begin-storm.iml" filepath="$PROJECT_DIR$/begin-storm/begin-storm.iml" />
       <module fileurl="file://$PROJECT_DIR$/collections/collections.iml" filepath="$PROJECT_DIR$/collections/collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/desultory-essay.iml" filepath="$PROJECT_DIR$/desultory-essay.iml" />
       <module fileurl="file://$PROJECT_DIR$/functional-programming/functional-programming.iml" filepath="$PROJECT_DIR$/functional-programming/functional-programming.iml" />
@@ -19,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-dependency-injection/spring-dependency-injection.iml" filepath="$PROJECT_DIR$/begin-spring/spring-dependency-injection/spring-dependency-injection.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-jdbc/spring-jdbc.iml" filepath="$PROJECT_DIR$/begin-spring/spring-jdbc/spring-jdbc.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-mvc/spring-mvc.iml" filepath="$PROJECT_DIR$/begin-spring/spring-mvc/spring-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-sourcecode/spring-sourcecode.iml" filepath="$PROJECT_DIR$/spring-sourcecode/spring-sourcecode.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-transaction/spring-transaction.iml" filepath="$PROJECT_DIR$/begin-spring/spring-transaction/spring-transaction.iml" />
       <module fileurl="file://$PROJECT_DIR$/think-in-java/think-in-java.iml" filepath="$PROJECT_DIR$/think-in-java/think-in-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/web-service-invoker/web-service-invoker.iml" filepath="$PROJECT_DIR$/web-service-invoker/web-service-invoker.iml" />

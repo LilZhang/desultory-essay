@@ -1,17 +1,10 @@
-/*
- *
- * Copyright (c) 2010-2015 by Shanghai HanTao Information Co., Ltd.
- * All rights reserved.
- *
- */
-
 package oops;
 
 /**
  * Description:
  * <p>
  * Create Author  : lilzhang
- * Create Date    : 2017-02-05
+ * Create Date    : 2017-07-31
  * Project        : desultory-essay
  * File Name      : App.java
  */
@@ -19,6 +12,6 @@ public class App
 {
     public static void main(String[] args) throws Exception
     {
-        System.out.println(args[0]);
+        System.out.println("...");
     }
 }

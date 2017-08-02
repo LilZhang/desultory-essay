@@ -16,6 +16,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="begin-storm" />
         <module name="collections" />
         <module name="functional-programming" />
         <module name="inside-the-java-virtual-machine" />
@@ -30,6 +31,7 @@
         <module name="spring-aop" />
         <module name="spring-jdbc" />
         <module name="spring-mvc" />
+        <module name="spring-sourcecode" />
         <module name="spring-transaction" />
         <module name="think-in-java" />
         <module name="web-service-invoker" />
@@ -37,12 +39,13 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="begin-spring" target="1.5" />
+      <module name="begin-storm" target="1.5" />
       <module name="collections" target="1.5" />
       <module name="desultory-essay" target="1.5" />
       <module name="functional-programming" target="1.5" />
       <module name="inside-the-java-virtual-machine" target="1.5" />
       <module name="java-communication" target="1.5" />
-      <module name="java-concurrency-in-practice" target="1.8" />
+      <module name="java-concurrency-in-practice" target="1.5" />
       <module name="learning-sql" target="1.5" />
       <module name="netty-in-action" target="1.8" />
       <module name="redis-compress" target="1.5" />
@@ -53,8 +56,9 @@
       <module name="spring-dependency-injection" target="1.5" />
       <module name="spring-jdbc" target="1.5" />
       <module name="spring-mvc" target="1.5" />
+      <module name="spring-sourcecode" target="1.5" />
       <module name="spring-transaction" target="1.5" />
-      <module name="think-in-java" target="1.8" />
+      <module name="think-in-java" target="1.5" />
       <module name="web-service-invoker" target="1.5" />
     </bytecodeTargetLevel>
   </component>
