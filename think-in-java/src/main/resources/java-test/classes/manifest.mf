@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.lilzh.runner.RunApp
+Class-Path: lib/word-printer.jar lib/word-printer-runnable.jar
