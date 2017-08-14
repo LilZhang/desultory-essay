@@ -22,6 +22,8 @@
     <module>java-concurrency-in-practice</module>
     <module>spring-sourcecode</module>
 	<module>begin-storm</module>
+	<module>redis-in-action</module>
+	<module>from-paxos-to-zookeeper</module>
   </modules>
   <packaging>pom</packaging>
 

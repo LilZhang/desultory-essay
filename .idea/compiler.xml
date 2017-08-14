@@ -18,6 +18,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="begin-storm" />
         <module name="collections" />
+        <module name="from-paxos-to-zookeeper" />
         <module name="functional-programming" />
         <module name="inside-the-java-virtual-machine" />
         <module name="java-communication" />
@@ -26,6 +27,7 @@
         <module name="netty-in-action" />
         <module name="redis-compress" />
         <module name="redis-devops" />
+        <module name="redis-in-action" />
         <module name="runnable-jar" />
         <module name="serlvet-jsp-a-tutorial" />
         <module name="spring-aop" />
@@ -42,6 +44,7 @@
       <module name="begin-storm" target="1.5" />
       <module name="collections" target="1.5" />
       <module name="desultory-essay" target="1.5" />
+      <module name="from-paxos-to-zookeeper" target="1.5" />
       <module name="functional-programming" target="1.5" />
       <module name="inside-the-java-virtual-machine" target="1.5" />
       <module name="java-communication" target="1.5" />
@@ -50,6 +53,7 @@
       <module name="netty-in-action" target="1.8" />
       <module name="redis-compress" target="1.5" />
       <module name="redis-devops" target="1.5" />
+      <module name="redis-in-action" target="1.5" />
       <module name="runnable-jar" target="1.5" />
       <module name="serlvet-jsp-a-tutorial" target="1.5" />
       <module name="spring-aop" target="1.5" />

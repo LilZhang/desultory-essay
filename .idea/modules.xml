@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/begin-storm/begin-storm.iml" filepath="$PROJECT_DIR$/begin-storm/begin-storm.iml" />
       <module fileurl="file://$PROJECT_DIR$/collections/collections.iml" filepath="$PROJECT_DIR$/collections/collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/desultory-essay.iml" filepath="$PROJECT_DIR$/desultory-essay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/from-paxos-to-zookeeper/from-paxos-to-zookeeper.iml" filepath="$PROJECT_DIR$/from-paxos-to-zookeeper/from-paxos-to-zookeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/functional-programming/functional-programming.iml" filepath="$PROJECT_DIR$/functional-programming/functional-programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/inside-the-java-virtual-machine/inside-the-java-virtual-machine.iml" filepath="$PROJECT_DIR$/inside-the-java-virtual-machine/inside-the-java-virtual-machine.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-communication/java-communication.iml" filepath="$PROJECT_DIR$/java-communication/java-communication.iml" />
@@ -14,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/netty-in-action/netty-in-action.iml" filepath="$PROJECT_DIR$/netty-in-action/netty-in-action.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-compress/redis-compress.iml" filepath="$PROJECT_DIR$/redis-compress/redis-compress.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis-devops/redis-devops.iml" filepath="$PROJECT_DIR$/redis-devops/redis-devops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis-in-action/redis-in-action.iml" filepath="$PROJECT_DIR$/redis-in-action/redis-in-action.iml" />
       <module fileurl="file://$PROJECT_DIR$/runnable-jar/runnable-jar.iml" filepath="$PROJECT_DIR$/runnable-jar/runnable-jar.iml" />
       <module fileurl="file://$PROJECT_DIR$/serlvet-jsp-a-tutorial/serlvet-jsp-a-tutorial.iml" filepath="$PROJECT_DIR$/serlvet-jsp-a-tutorial/serlvet-jsp-a-tutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/begin-spring/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/begin-spring/spring-aop/spring-aop.iml" />

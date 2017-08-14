@@ -1,3 +1,4 @@
+/*
 package oops.java8;
 
 import oops.ResourceUtil;
@@ -11,3 +12,4 @@ public class App2
         System.out.println("runnable.test.data3: " + ResourceUtil.readProperty("runnable.test.data3"));
     }
 }
+*/
