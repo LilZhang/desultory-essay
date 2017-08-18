@@ -37,7 +37,10 @@
 - acceptor 可以记住已批准的提案最大编号和已响应 prepare 请求的最大编号
 
 
-3. 算法陈述
+
+3. learner 获取提案 value
+
+- 只要获取集合中的多数 value 即可
 
 
 
