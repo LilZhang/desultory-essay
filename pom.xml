@@ -24,6 +24,7 @@
 	<module>begin-storm</module>
 	<module>redis-in-action</module>
 	<module>from-paxos-to-zookeeper</module>
+    <module>getting-started-with-google-guava</module>
   </modules>
   <packaging>pom</packaging>
 
